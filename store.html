@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle T-Shirt Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jungle Quest T-Shirt - $19.99</h1>
+        <div class="tshirt">
+            <img src="images/tshirt.jpg" alt="T-Shirt" height="200">
+            <div class="description">
+                <p>Embark on a thrilling jungle adventure with this stylish and comfortable t-shirt. 
+                Made from premium organic cotton, it's perfect for all your outdoor escapades.</p>
+            </div>
+        </div>
+        <div class="product-info">
+            <div class="size-selection">
+                <label for="size">Select size:</label>
+                <select id="size">
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M" selected>M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="3XL">3XL</option>
+                    <option value="4XL">4XL</option>
+                </select>
+            </div>
+            <div class="promo">
+                <label for="promoCode"></label>
+                <input type="text" id="promoCode" placeholder="Enter promo code">
+                <button onclick="applyPromoCode()">Apply</button>
+            </div>
+            <p class="total" id="totalPrice">Total: $19.99</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
