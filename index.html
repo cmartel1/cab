@@ -60,7 +60,6 @@
             text-shadow: 1px 1px 2px #000;
         }
 
-        /* Media Query for Mobile Devices */
         @media screen and (max-width: 480px) {
             h1 {
                 font-size: 28px;
@@ -102,12 +101,12 @@
             event.preventDefault(); // Prevent form submission
 
             var enteredPassword = passwordInput.value;
-            var correctPassword = "incorrect"; // Replace with your desired password
+            var correctPassword = "incorrect";
 
             if (enteredPassword === correctPassword) {
-                window.location.href = "password-protected.html"; // Redirect to the protected page
+                window.location.href = "password-protected.html"; 
             } else {
-                errorMessage.textContent = "The password is incorrect."; // Display error message
+                errorMessage.textContent = "The password is incorrect.";
             }
         });
     </script>
