@@ -172,12 +172,18 @@ h1 {
                     <option value="4XL">4XL</option>
                 </select>
             </div>
-            <div class="promo">
-                <label for="promoCode"></label>
-                <input type="text" id="promoCode" placeholder="Enter promo code">
-                <button onclick="applyPromoCode()">Apply</button>
-                <p class="warning" id="warningMsg"></p>
-            </div>
+           
+    <div class="promo">
+        <label for="promoCode"></label>
+        <input type="text" id="promoCode" placeholder="Enter promo code">
+        <button onclick="applyPromoCode()">Apply</button>
+        <p class="warning" id="warningMsg"></p>
+        <div id="videoLink" style="display: none;">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <button>Watch Video</button>
+            </a>
+        </div>
+    </div>
             
             <p class="total" id="totalPrice">Total: $19.99</p>
         </div>
@@ -186,7 +192,7 @@ h1 {
         function applyPromoCode() {
             const promoCodeInput = document.getElementById("promoCode");
             const warningMsg = document.getElementById("warningMsg");
-            const totalPrice = document.getElementById("totalPrice");
+            const videoLink = document.getElementById("videoLink");
 
             const enteredPromoCode = promoCodeInput.value.trim().toLowerCase();
 
@@ -194,13 +200,13 @@ h1 {
             const validPromoCode = "invalid";
 
             if (enteredPromoCode === validPromoCode) {
-                // Apply discount and show success message
-                totalPrice.textContent = "Next clue: https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                // Display the video link button
+                videoLink.style.display = "block";
                 warningMsg.textContent = "Promo code applied successfully!";
                 warningMsg.style.color = "#00cc00"; // Green color for success
             } else {
-                // Clear previous discount and show warning message
-                totalPrice.textContent = "Total: $19.99";
+                // Hide the video link button and show warning message
+                videoLink.style.display = "none";
                 warningMsg.textContent = "Your promo code is invalid. Please try again.";
                 warningMsg.style.color = "#cc0000"; // Red color for warning
             }
