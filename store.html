@@ -5,6 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jungle T-Shirt Shop</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2B2D20; /* Dark green background */
+    color: #fff;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #354B37; /* Olive green container background */
+    border: 1px solid #3E583D;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tshirt {
+    text-align: center;
+}
+
+.tshirt img {
+    width: 200px;
+    border: 2px solid #FFD700; /* Golden yellow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.size-selection {
+    margin: 20px 0;
+}
+
+.size-selection label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+}
+
+.size-selection select {
+    padding: 10px;
+    margin-left: 5px;
+    font-size: 18px;
+    background-color: #526C52; /* Dark green */
+    color: #FFD700; /* Golden yellow */
+    border: 1px solid #526C52;
+}
+
+.promo {
+    margin: 30px 0;
+}
+
+.promo label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+}
+
+.promo input {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #526C52; /* Dark green */
+    color: #FFD700; /* Golden yellow */
+    border: 1px solid #526C52;
+}
+
+.promo button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #FFD700; /* Golden yellow */
+    color: #222;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.promo button:hover {
+    background-color: #FFC300; /* Lighter golden yellow */
+}
+
+.total {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ... Your previous CSS styles ... */
+
+.description {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.description h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700; /* Golden yellow */
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 16px;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.product-info {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center horizontally */
+    margin-top: 20px;
+}
+
+.size-selection,
+.promo,
+.total {
+    margin-top: 10px; /* Add some space between items */
+}
+.warning {
+    margin-top: 10px;
+    text-align: center;
+}
+
+    </style>
 </head>
 <body>
     <div class="container">
@@ -34,10 +176,38 @@
                 <label for="promoCode"></label>
                 <input type="text" id="promoCode" placeholder="Enter promo code">
                 <button onclick="applyPromoCode()">Apply</button>
+                <p class="warning" id="warningMsg"></p>
             </div>
+            
             <p class="total" id="totalPrice">Total: $19.99</p>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        function applyPromoCode() {
+            const promoCodeInput = document.getElementById("promoCode");
+            const warningMsg = document.getElementById("warningMsg");
+            const totalPrice = document.getElementById("totalPrice");
+
+            const enteredPromoCode = promoCodeInput.value.trim().toLowerCase();
+
+            // Replace "beaver" with the actual valid promo code
+            const validPromoCode = "invalid";
+
+            if (enteredPromoCode === validPromoCode) {
+                // Apply discount and show success message
+                totalPrice.textContent = "Next clue: https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                warningMsg.textContent = "Promo code applied successfully!";
+                warningMsg.style.color = "#00cc00"; // Green color for success
+            } else {
+                // Clear previous discount and show warning message
+                totalPrice.textContent = "Total: $19.99";
+                warningMsg.textContent = "Your promo code is invalid. Please try again.";
+                warningMsg.style.color = "#cc0000"; // Red color for warning
+            }
+
+            // Clear the input field after applying or invalidating the promo code
+            promoCodeInput.value = "";
+        }
+    </script>
 </body>
 </html>
