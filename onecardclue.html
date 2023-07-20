@@ -115,49 +115,52 @@
     <div class="top-secret-stamp">TOP SECRET</div>
     <div class="content">
         <h1>Top Secret Video</h1>
-        <iframe id="videoIframe" width="789" height="444" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <p class="top-secret-message" id="countdown">This message will self-destruct in 100 seconds.</p>
+        <iframe id="videoIframe" width="789" height="444" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <p class="top-secret-message" id="countdown">This video will self-destruct in 100 seconds.</p>
     </div>
 <div id="secretMessage" style="display: none; color: #ff0; font-size: 24px; margin-top: 20px;">
     Congratulations! You've unlocked the secret message!
 </div>
-<script>
-    // Countdown timer in seconds
-    const countdownSeconds = 100;
-    let remainingSeconds = countdownSeconds;
+    <script>
+        // Countdown timer in seconds
+        const countdownSeconds = 100;
+        let remainingSeconds = countdownSeconds;
 
-    // Function to update the countdown message
-    function updateCountdownMessage() {
-        const countdownMessage = document.getElementById('countdown');
-        countdownMessage.textContent = `This message will self-destruct in ${remainingSeconds} seconds.`;
-    }
+        // Function to update the countdown message
+        function updateCountdownMessage() {
+            const countdownMessage = document.getElementById('countdown');
+            countdownMessage.textContent = `This video will self-destruct in ${remainingSeconds} seconds.`;
+        }
 
-    // Function to start the countdown
-    function startCountdown() {
-        const countdownInterval = setInterval(() => {
-            remainingSeconds--;
-            updateCountdownMessage();
+        // Function to start the countdown
+        function startCountdown() {
+            const countdownInterval = setInterval(() => {
+                remainingSeconds--;
+                updateCountdownMessage();
 
-            if (remainingSeconds <= 0) {
-                clearInterval(countdownInterval);
-                handleEndOfTimer();
-            }
-        }, 1000);
-    }
+                if (remainingSeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    handleEndOfTimer();
+                }
+            }, 1000);
+        }
 
-    // Function to handle the end of the countdown
-    function handleEndOfTimer() {
-        const videoIframe = document.getElementById('videoIframe');
-        videoIframe.style.display = 'none'; // Hide the video
+        // Function to handle the end of the countdown
+        function handleEndOfTimer() {
+            const videoIframe = document.getElementById('videoIframe');
+            videoIframe.style.display = 'none'; // Hide the video
 
-        // Show the hidden secret message
-        const secretMessage = document.getElementById('secretMessage');
-        secretMessage.style.display = 'block';
-    }
+            // Show the hidden secret message
+            const secretMessage = document.getElementById('secretMessage');
+            secretMessage.style.display = 'block';
+        }
 
-    // Start the countdown
-    startCountdown();
-</script>
+        // Start the countdown
+        startCountdown();
+    </script>
+</body>
+</html>
+
     </body>
     </html>
     
