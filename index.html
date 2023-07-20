@@ -119,8 +119,7 @@ button[type=submit] {
 </head>
 <body>
 <div class="top-secret-stamp">TOP SECRET</div>
-<h1>Welcome to the CAB Jungle<br>Quest Store</h1>
-<h2>Explore our collection of exclusive items!</h2>
+<h1>Welcome to the Jungle Quest<br>Scavenger Hunt</h1>
 <form id="passwordForm">
     <input type="password" id="passwordInput" placeholder="Enter password" />
     <button type="submit">Unlock Next Clue</button>
@@ -139,7 +138,7 @@ button[type=submit] {
         var correctPassword = "incorrect";
 
         if (enteredPassword === correctPassword) {
-            window.location.href = "store.html"; 
+            window.location.href = "onecardclue.html"; 
         } else {
             errorMessage.textContent = "The password is incorrect.";
         }
