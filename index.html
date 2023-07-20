@@ -1,86 +1,113 @@
-<style>
-    body {
-        font-family: "Courier New", monospace;
-        background-color: #000;
-        color: #fff;
-        text-align: center;
-        margin-top: 150px;
-        position: relative;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle T-Shirt Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    font-family: "Courier New", monospace;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    margin-top: 150px;
+    position: relative;
+}
+h1 {
+    font-size: 48px;
+    letter-spacing: 4px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+/* Adjust the heading font size for smaller screens */
+@media screen and (max-width: 480px) {
     h1 {
         font-size: 36px;
-        letter-spacing: 4px;
+    }
+}
+
+input[type=password] {
+    padding: 15px;
+    font-size: 24px;
+    background-color: #222;
+    color: #fff;
+    border: 2px solid #444;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px; /* Limit the maximum width for larger screens */
+    margin: 10px auto; /* Center the input box */
+}
+
+button[type=submit] {
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px; /* Limit the maximum width for larger screens */
+    margin: 10px auto; /* Center the button */
+}
+
+#errorMessage {
+    color: red;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.top-secret-stamp {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f00;
+    padding: 4px 12px;
+    transform: rotate(-25deg);
+    opacity: 0.6;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.top-secret-message {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #ff0;
+    font-style: italic;
+    text-shadow: 1px 1px 2px #000;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 36px; /* Larger font size for mobile */
     }
     input[type=password] {
-        padding: 10px;
-        font-size: 16px;
-        background-color: #222;
-        color: #fff;
-        border: 2px solid #444;
-        border-radius: 5px;
+        font-size: 20px; /* Larger font size for mobile */
+        padding: 10px; /* Larger padding for mobile */
     }
     button[type=submit] {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-    #errorMessage {
-        color: red;
-        margin-top: 20px;
-        font-style: italic;
+        font-size: 20px; /* Larger font size for mobile */
+        padding: 10px 20px; /* Larger padding for mobile */
     }
     .top-secret-stamp {
-        position: absolute;
-        top: -100px;
-        left: 20px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #f00;
-        padding: 4px 12px;
-        transform: rotate(-25deg);
-        opacity: 0.6;
-        text-shadow: 2px 2px 4px #000;
+        font-size: 30px; /* Larger font size for mobile */
+        top: -80px; /* Adjust positioning for mobile */
+        padding: 2px 12px; /* Adjust padding for mobile */
     }
     .top-secret-message {
-        font-size: 18px;
-        margin-top: 10px;
-        color: #ff0;
-        font-style: italic;
-        text-shadow: 1px 1px 2px #000;
+        font-size: 24px; /* Larger font size for mobile */
     }
-
-    @media screen and (max-width: 480px) {
-        h1 {
-            font-size: 48px; /* Larger font size for mobile */
-        }
-        input[type=password] {
-            font-size: 24px; /* Larger font size for mobile */
-            padding: 15px; /* Larger padding for mobile */
-        }
-        button[type=submit] {
-            font-size: 24px; /* Larger font size for mobile */
-            padding: 15px 30px; /* Larger padding for mobile */
-        }
-        .top-secret-stamp {
-            font-size: 30px; /* Larger font size for mobile */
-            top: -80px; /* Adjust positioning for mobile */
-            padding: 2px 12px; /* Adjust padding for mobile */
-        }
-        .top-secret-message {
-            font-size: 24px; /* Larger font size for mobile */
-        }
-    }
-</style>
+}
+    </style>
 </head>
 <body>
 <div class="top-secret-stamp">TOP SECRET</div>
-<h1>Welcome to the CAB Jungle Quest Store</h1>
+<h1>Welcome to the CAB Jungle<br>Quest Store</h1>
 <p>Explore our collection of exclusive items!</p>
 <form id="passwordForm">
     <input type="password" id="passwordInput" placeholder="Enter password" />
