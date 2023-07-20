@@ -1,115 +1,110 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CAB Scavenger Hunt</title>
-    <link rel="icon" href="images/favicon.ico">
-    <style>
-        body {
-            font-family: "Courier New", monospace;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            margin-top: 150px;
-            position: relative;
-        }
+<style>
+    body {
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        margin-top: 150px;
+        position: relative;
+    }
+    h1 {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+    input[type=password] {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #222;
+        color: #fff;
+        border: 2px solid #444;
+        border-radius: 5px;
+    }
+    button[type=submit] {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    #errorMessage {
+        color: red;
+        margin-top: 20px;
+        font-style: italic;
+    }
+    .top-secret-stamp {
+        position: absolute;
+        top: -100px;
+        left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #f00;
+        padding: 4px 12px;
+        transform: rotate(-25deg);
+        opacity: 0.6;
+        text-shadow: 2px 2px 4px #000;
+    }
+    .top-secret-message {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #ff0;
+        font-style: italic;
+        text-shadow: 1px 1px 2px #000;
+    }
+
+    @media screen and (max-width: 480px) {
         h1 {
-            font-size: 36px;
-            letter-spacing: 4px;
+            font-size: 48px; /* Larger font size for mobile */
         }
         input[type=password] {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #222;
-            color: #fff;
-            border: 2px solid #444;
-            border-radius: 5px;
+            font-size: 24px; /* Larger font size for mobile */
+            padding: 15px; /* Larger padding for mobile */
         }
         button[type=submit] {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        #errorMessage {
-            color: red;
-            margin-top: 20px;
-            font-style: italic;
+            font-size: 24px; /* Larger font size for mobile */
+            padding: 15px 30px; /* Larger padding for mobile */
         }
         .top-secret-stamp {
-            position: absolute;
-            top: -100px;
-            left: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #f00;
-            padding: 4px 12px;
-            transform: rotate(-25deg);
-            opacity: 0.6;
-            text-shadow: 2px 2px 4px #000;
+            font-size: 30px; /* Larger font size for mobile */
+            top: -80px; /* Adjust positioning for mobile */
+            padding: 2px 12px; /* Adjust padding for mobile */
         }
         .top-secret-message {
-            font-size: 18px;
-            margin-top: 10px;
-            color: #ff0;
-            font-style: italic;
-            text-shadow: 1px 1px 2px #000;
+            font-size: 24px; /* Larger font size for mobile */
         }
-
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 28px;
-            }
-            input[type=password] {
-                font-size: 14px;
-                padding: 8px;
-            }
-            button[type=submit] {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-            .top-secret-stamp {
-                font-size: 20px;
-                top: -80px;
-                padding: 2px 8px;
-            }
-            .top-secret-message {
-                font-size: 16px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <div class="top-secret-stamp">TOP SECRET</div>
-    <h1>Welcome to the CAB Jungle Quest Store</h1>
-    <p>Explore our collection of exclusive items!</p>    <form id="passwordForm">
-        <input type="password" id="passwordInput" placeholder="Enter password" />
-        <button type="submit">Unlock Next Clue</button>
-    </form>
-    <p id="errorMessage"></p>
+<div class="top-secret-stamp">TOP SECRET</div>
+<h1>Welcome to the CAB Jungle Quest Store</h1>
+<p>Explore our collection of exclusive items!</p>
+<form id="passwordForm">
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button type="submit">Unlock Next Clue</button>
+</form>
+<p id="errorMessage"></p>
 
-    <script>
-        var passwordForm = document.getElementById("passwordForm");
-        var passwordInput = document.getElementById("passwordInput");
-        var errorMessage = document.getElementById("errorMessage");
+<script>
+    var passwordForm = document.getElementById("passwordForm");
+    var passwordInput = document.getElementById("passwordInput");
+    var errorMessage = document.getElementById("errorMessage");
 
-        passwordForm.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent form submission
+    passwordForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
 
-            var enteredPassword = passwordInput.value;
-            var correctPassword = "incorrect";
+        var enteredPassword = passwordInput.value;
+        var correctPassword = "jungle123";
 
-            if (enteredPassword === correctPassword) {
-                window.location.href = "store.html"; 
-            } else {
-                errorMessage.textContent = "The password is incorrect.";
-            }
-        });
-    </script>
+        if (enteredPassword === correctPassword) {
+            window.location.href = "store.html"; 
+        } else {
+            errorMessage.textContent = "The password is incorrect.";
+        }
+    });
+</script>
 </body>
 </html>
-
