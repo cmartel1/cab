@@ -92,26 +92,12 @@ h1 {
     transition: background-color 0.3s;
 }
 
-#videobutton {
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #FFD700; /* Golden yellow */
-    color: #222;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex; /* Add display:flex to make it a flex container */
-    justify-content: center; /* Center the content horizontally */
-
-}
-
 @media screen and (max-width: 480px) {
             h1 {
                 font-size: 36px; /* Larger font size for mobile */
             }
             .tshirt img {
-                width: 150px; /* Adjust image size for mobile */
+                width: 190px; /* Adjust image size for mobile */
             }
             .promo label {
                 font-size: 18px; /* Larger font size for mobile */
@@ -208,7 +194,7 @@ h1 {
         <button onclick="applyPromoCode()">Apply</button>
         <p class="warning" id="warningMsg"></p>
         <div id="videoLink" style="display: none; text-align: center;">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="display: flex; justify-content: center;">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="text-decoration:none; display: flex; justify-content: center;">
                 <button id="videobutton">Watch Video</button>
             </a>
         </div>
@@ -230,11 +216,13 @@ h1 {
             if (enteredPromoCode === validPromoCode) {
                 // Display the video link button
                 videoLink.style.display = "block";
+                totalPrice.style.display = "none";
                 warningMsg.textContent = "Promo code applied successfully!";
                 warningMsg.style.color = "#00cc00"; // Green color for success
             } else {
                 // Hide the video link button and show warning message
                 videoLink.style.display = "none";
+                totalPrice.style.display = "block";
                 warningMsg.textContent = "Your promo code is invalid. Please try again.";
                 warningMsg.style.color = "#cc0000"; // Red color for warning
             }
