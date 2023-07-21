@@ -71,6 +71,17 @@
             text-shadow: 2px 2px 4px #000;
         }
 
+        .mobile-navigation {
+            display: none; /* Initially hide the navigation for non-mobile devices */
+        }
+
+        .mobile-navigation a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px;
+        }
+
         .top-secret-message {
             font-size: 18px;
             margin-top: 10px;
@@ -114,11 +125,11 @@
             border-radius: 5px;
         }
 
-        .map-button-container a{
+        .map-button-container a {
             text-decoration: none;
         }
 
-        .container a{
+        .container a {
             text-decoration: none;
         }
 
@@ -185,6 +196,7 @@
                 display: none; /* Hide the map button on mobile screens */
             }
 
+            /* Show the mobile navigation bar on mobile devices */
             .mobile-navigation {
                 display: flex;
                 justify-content: space-around;
@@ -213,16 +225,6 @@
             }
         }
         
-        .mobile-navigation {
-            display: none; /* Initially hide the navigation for non-mobile devices */
-        }
-
-        .mobile-navigation a {
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            padding: 10px;
-        }
         .envelope-link,
         .map-link {
             display: block;
@@ -256,10 +258,10 @@
     </div>
 </div>
 <div class="mobile-navigation">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="envelope.html">Clue Archive</a>
-    <a href="map.html">Map</a>
+    <a href="index.html"><span>Home</span></a>
+    <a href="about.html"><span>About</span></a>
+    <a href="envelope.html"><span>Clue Archive</span></a>
+    <a href="map.html"><span>Map</span></a>
 </div>
 <script>
     var passwordForm = document.getElementById("passwordForm");
