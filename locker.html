@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Locker Combo</title>
+    <link rel="icon" href="images/favicon.ico">
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin-top: 150px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 48px;
+            letter-spacing: 4px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        /* Adjust the heading font size for smaller screens */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
+        }
+
+        .top-secret-stamp {
+            position: absolute;
+            top: -100px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #f00;
+            padding: 4px 12px;
+            transform: rotate(-25deg);
+            opacity: 0.6;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .locker-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .locker-cell {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            margin: 0 5px;
+            background-color: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-secret-stamp">TOP SECRET</div>
+    <h1>Enter the Secret Locker Combo</h1>
+    <div class="locker-container">
+        <div class="locker-cell" contenteditable="true" id="cell1" oninput="handleInput(this)"></div>
+        <div class="locker-cell" contenteditable="true" id="cell2" oninput="handleInput(this)"></div>
+        <div class="locker-cell" contenteditable="true" id="cell3" oninput="handleInput(this)"></div>
+        <div class="locker-cell" contenteditable="true" id="cell4" oninput="handleInput(this)"></div>
+    </div>
+    <button onclick="checkCombination()">Unlock</button>
+    <p class="error-message" id="errorMessage"></p>
+
+    <script>
+        const lockerCells = document.querySelectorAll('.locker-cell');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Function to handle input in each locker cell
+        function handleInput(cell) {
+            // Limit the input to only one digit
+            const inputValue = cell.innerText.trim();
+            if (inputValue.length > 1) {
+                cell.innerText = inputValue[inputValue.length - 1];
+            }
+        }
+
+        // Function to check the combination
+        function checkCombination() {
+            const enteredCombination = Array.from(lockerCells).map(cell => cell.innerText.trim());
+
+            // Check if all cells are filled with unique digits
+            if (enteredCombination.length === 4 && new Set(enteredCombination).size === 4) {
+                errorMessage.textContent = ''; // Clear error message
+                revealMessage();
+            } else {
+                errorMessage.textContent = 'Please enter 4 unique digits in each cell.'; // Show error message
+            }
+        }
+
+        // Function to reveal the hidden message
+        function revealMessage() {
+            const lockerContainer = document.querySelector('.locker-container');
+            const unlockButton = document.querySelector('button');
+            const hiddenMessage = document.createElement('div');
+            hiddenMessage.classList.add('hidden-message');
+            hiddenMessage.textContent = 'Congratulations! You unlocked the hidden message. This is another top-secret content.';
+            lockerContainer.appendChild(hiddenMessage);
+            unlockButton.disabled = true; // Disable the unlock button
+        }
+    </script>
+</body>
+</html>

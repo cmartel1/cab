@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Logo</title>
+    <link rel="icon" href="images/favicon.ico">
+    <style>
+body {
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            letter-spacing: 2px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            margin-top: 90px;
+        }
+
+        .logo-image {
+            width: 250px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        .logo-input {
+            padding: 10px;
+            font-size: 20px;
+            background-color: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #ff0;
+            font-style: italic;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .navigation-bar {
+            background-color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navigation-bar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+        
+    </style> 
+</head>
+<body>
+    <div class="navigation-bar">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Map</a>
+    </div>
+
+    <h1>Guess the Logo</h1>
+    <img src="images/babson.png" alt="Logo" class="logo-image" id="logoImage">
+    <br>
+    <input type="text" class="logo-input" id="guessInput" placeholder="Enter your guess">
+    <br>
+    <button type="button" onclick="checkGuess()">Submit</button>
+    <div class="hidden-message" id="hiddenMessage"></div>
+
+<script>
+    const logos = [
+        { url: 'images/babson.png', name: 'babson beavers' },
+        { url: 'images/jaguar.png', name: 'jacksonville jaguars' },
+        { url: 'images/monkey.png', name: 'surveymonkey' },
+        { url: 'images/alligator.png', name: 'lacoste' },
+    ];
+
+    let currentLogoIndex = 0;
+    let score = 0;
+    let videoDisplayed = false; // New variable to track if the video is displayed
+
+    function displayCurrentLogo() {
+        const logoImage = document.getElementById('logoImage');
+        logoImage.src = logos[currentLogoIndex].url;
+    }
+
+    function checkGuess() {
+        const guessInput = document.getElementById('guessInput');
+        const guess = guessInput.value.trim().toLowerCase();
+
+        const hiddenMessage = document.getElementById('hiddenMessage');
+        if (guess === logos[currentLogoIndex].name) {
+            hiddenMessage.textContent = 'Correct! You guessed the logo.';
+            score++;
+
+            // Move to the next logo
+            currentLogoIndex++;
+            if (currentLogoIndex < logos.length) {
+                displayCurrentLogo();
+            } else {
+                if (!videoDisplayed) { // Display the video only once
+                    displayYouTubeVideo();
+                    videoDisplayed = true;
+                    hideHiddenMessage(); // Hide the hidden message
+                }
+            }
+        } else {
+            hiddenMessage.textContent = 'Incorrect. Try again.';
+        }
+
+        hiddenMessage.style.display = 'block';
+        guessInput.value = '';
+    }
+
+    function displayYouTubeVideo() {
+        const logoImage = document.getElementById('logoImage');
+        const guessInput = document.getElementById('guessInput');
+        const submitButton = document.querySelector('button');
+
+        logoImage.style.display = 'none';
+        guessInput.style.display = 'none';
+        submitButton.style.display = 'none';
+
+        const youtubeVideo = document.createElement('iframe');
+        youtubeVideo.width = '560';
+        youtubeVideo.height = '315';
+        youtubeVideo.src = 'https://www.youtube.com/embed/your-youtube-video-id';
+        youtubeVideo.title = 'YouTube Video';
+        youtubeVideo.allowFullscreen = true;
+        document.body.appendChild(youtubeVideo);
+    }
+
+    function hideHiddenMessage() {
+        const hiddenMessage = document.getElementById('hiddenMessage');
+        hiddenMessage.style.display = 'none';
+    }
+
+    // Display the first logo on page load
+    displayCurrentLogo();
+</script>
+</body>
+</html>
