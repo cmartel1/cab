@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babson College Quiz</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #FFD700; /* Golden yellow */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .question p {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .question label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD700; /* Golden yellow */
+            color: #222;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #FFC300; /* Lighter golden yellow */
+        }
+
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #FFD700; /* Golden yellow */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-wrapper {
+            display: none;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px; /* Curved border */
+            overflow: hidden; /* Hide overflowing content */
+            border: 3px solid #777; /* Grey border */
+            margin-top: 40px;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .navigation-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .navigation-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .navigation-bar a:hover {
+            border-bottom: 2px solid #4CAF50;
+            color: #4CAF50; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+    <div class="navigation-bar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="envelope.html" class="active-link">Clues</a>
+        <a href="map.html">Map</a>
+    </div>
+
+        <h1 class="title">Babson College Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. When was Babson College founded?</p>
+                <label><input type="radio" name="q1" value="a"> a) 1919</label>
+                <label><input type="radio" name="q1" value="b"> b) 1929</label>
+                <label><input type="radio" name="q1" value="c"> c) 1939</label>
+            </div>
+            <div class="question">
+                <p>2. What is the Babson mascot?</p>
+                <label><input type="radio" name="q2" value="a"> a) Beaver</label>
+                <label><input type="radio" name="q2" value="b"> b) Lion</label>
+                <label><input type="radio" name="q2" value="c"> c) Bear</label>
+            </div>
+            <div class="question">
+                <p>3. Who is the founder of Babson College?</p>
+                <label><input type="radio" name="q3" value="a"> a) Roger Babson</label>
+                <label><input type="radio" name="q3" value="b"> b) John Smith</label>
+                <label><input type="radio" name="q3" value="c"> c) Michael Johnson</label>
+            </div>
+            <div class="question">
+                <p>4. What city is Babson College located in?</p>
+                <label><input type="radio" name="q4" value="a"> a) New York City</label>
+                <label><input type="radio" name="q4" value="b"> b) Boston</label>
+                <label><input type="radio" name="q4" value="c"> c) Chicago</label>
+            </div>
+            <div class="question">
+                <p>5. Which of the following degrees does Babson College offer?</p>
+                <label><input type="radio" name="q5" value="a"> a) Bachelor of Science in Business Administration</label>
+                <label><input type="radio" name="q5" value="b"> b) Bachelor of Arts in Engineering</label>
+                <label><input type="radio" name="q5" value="c"> c) Bachelor of Medicine</label>
+            </div>
+            <div class="question">
+                <p>6. What is the official motto of Babson College?</p>
+                <label><input type="radio" name="q6" value="a"> a) "Just Do It"</label>
+                <label><input type="radio" name="q6" value="b"> b) "Education for Everyone"</label>
+                <label><input type="radio" name="q6" value="c"> c) "Entrepreneurship for a Better World"</label>
+            </div>
+            <div class="question">
+                <p>7. How many undergraduate students are enrolled at Babson College?</p>
+                <label><input type="radio" name="q7" value="a"> a) Approximately 2,500</label>
+                <label><input type="radio" name="q7" value="b"> b) Approximately 10,000</label>
+                <label><input type="radio" name="q7" value="c"> c) Approximately 50,000</label>
+            </div>
+            <div class="question">
+                <p>8. Babson College is known for its focus on:</p>
+                <label><input type="radio" name="q8" value="a"> a) Engineering</label>
+                <label><input type="radio" name="q8" value="b"> b) Business and Entrepreneurship</label>
+                <label><input type="radio" name="q8" value="c"> c) Medicine</label>
+            </div>
+            <div class="question">
+                <p>9. What is the official color of Babson College?</p>
+                <label><input type="radio" name="q9" value="a"> a) Blue</label>
+                <label><input type="radio" name="q9" value="b"> b) Red</label>
+                <label><input type="radio" name="q9" value="c"> c) Green</label>
+            </div>
+            <div class="question">
+                <p>10. Babson College has a strong emphasis on:</p>
+                <label><input type="radio" name="q10" value="a"> a) Arts and Humanities</label>
+                <label><input type="radio" name="q10" value="b"> b) Leadership and Innovation</label>
+                <label><input type="radio" name="q10" value="c"> c) Athletics</label>
+            </div>
+            <button type="button" onclick="submitQuiz()">Submit Answers</button>
+        </form>
+
+        <div class="message" id="message"></div>
+
+        <div class="video-wrapper" id="videoWrapper">
+            <!-- Replace the src attribute with your actual video URL -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const quizForm = document.getElementById("quizForm");
+            const answers = [
+                { question: "q1", correctAnswer: "a" },
+                { question: "q2", correctAnswer: "a" },
+                { question: "q3", correctAnswer: "a" },
+                { question: "q4", correctAnswer: "b" },
+                { question: "q5", correctAnswer: "a" },
+                { question: "q6", correctAnswer: "c" },
+                { question: "q7", correctAnswer: "a" },
+                { question: "q8", correctAnswer: "b" },
+                { question: "q9", correctAnswer: "c" },
+                { question: "q10", correctAnswer: "b" }
+            ];
+
+            let numCorrectAnswers = 0;
+
+            answers.forEach((answer) => {
+                const selectedAnswer = quizForm.elements[answer.question].value;
+                if (selectedAnswer === answer.correctAnswer) {
+                    numCorrectAnswers++;
+                }
+            });
+
+            const message = document.getElementById("message");
+            const videoWrapper = document.getElementById("videoWrapper");
+
+            if (numCorrectAnswers === answers.length) {
+                // If all answers are correct, show the congratulations message and the video
+                message.textContent = "Congratulations! You answered all questions correctly!";
+                videoWrapper.style.display = "block";
+            } else {
+                // If not all answers are correct, display a message with the number of correct answers
+                message.textContent = `You answered ${numCorrectAnswers} out of ${answers.length} questions correctly.`;
+                videoWrapper.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
