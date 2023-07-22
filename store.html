@@ -10,7 +10,7 @@ body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #2B2D20; /* Dark green background */
+    background-color:#354B37; /* Dark green background */
     color: #fff;
 }
 .container {
@@ -18,10 +18,32 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: #354B37; /* Olive green container background */
-    border: 1px solid #3E583D;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.navigation-bar {
+    font-family: "Courier New", monospace;
+
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .navigation-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .navigation-bar a:hover {
+            border-bottom: 2px solid #4CAF50;
+            color: #4CAF50; 
+        }
+
+        .active-link {
+            border-bottom: 2px solid #4CAF50
+        }
 h1 {
     text-align: center;
     font-size: 30px;
@@ -36,7 +58,7 @@ h1 {
 }
 
 .tshirt img {
-    width: 190px;
+    width: 170px;
     border: 2px solid #FFD700; /* Golden yellow */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -82,6 +104,17 @@ h1 {
 }
 
 .promo button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #FFD700; /* Golden yellow */
+    color: #222;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tshirtButton{
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
@@ -161,12 +194,67 @@ h1 {
     text-align: center;
 }
 
+
+        .navigation-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .navigation-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .navigation-bar a:hover {
+            border-bottom: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .active-link {
+            border-bottom: 2px solid #4CAF50
+        }
+
+        /* Additional CSS for the password input field */
+        .password-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .password-input {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #526C52; /* Dark green */
+            color: #FFD700; /* Golden yellow */
+            border: 1px solid #526C52;
+            margin-right: 10px;
+        }
+
+        .password-submit {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #FFD700; /* Golden yellow */
+            color: #222;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Jungle Quest T-Shirt - $19.99</h1>
-        <div class="tshirt">
+        <div class="navigation-bar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="envelope.html">Clues</a>
+            <a href="map.html">Map</a>
+        </div>
+        <h1>Jungle Quest T-Shirt - $20.00</h1>
+        <div class="tshirt" id="tshirtImage">
             <img src="images/tshirt.jpg" alt="T-Shirt" height="200">
             <div class="description">
                 <p>Embark on a thrilling jungle adventure with this stylish and comfortable t-shirt. 
@@ -187,49 +275,74 @@ h1 {
                     <option value="4XL">4XL</option>
                 </select>
             </div>
-           
-    <div class="promo">
-        <label for="promoCode"></label>
-        <input type="text" id="promoCode" placeholder="Enter promo code">
-        <button onclick="applyPromoCode()">Apply</button>
-        <p class="warning" id="warningMsg"></p>
-        <div id="videoLink" style="display: none; text-align: center;">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="text-decoration:none; display: flex; justify-content: center;">
-                <button id="videobutton">Watch Video</button>
-            </a>
-        </div>
-    </div> 
-            <p class="total" id="totalPrice">Total: $19.99</p>
+            <div class="promo">
+                <label for="promoCode"></label>
+                <input type="text" id="promoCode" placeholder="Enter promo code">
+                <button onclick="applyPromoCode()">Apply</button>
+                <p class="warning" id="warningMsg"></p>
+                <div id="videoLink" style="display: none; text-align: center;">
+                    <!-- Video link button and message (the same as provided earlier) -->
+                </div>
+            </div> 
+            <p class="total" id="totalPrice">Total: $20.00</p>
         </div>
     </div>
     <script>
+        const tshirtImage = document.getElementById("tshirtImage");
+        const videoLink = document.getElementById("videoLink");
+
+        let promoCodeEntered = false;
+
         function applyPromoCode() {
             const promoCodeInput = document.getElementById("promoCode");
             const warningMsg = document.getElementById("warningMsg");
-            const videoLink = document.getElementById("videoLink");
 
             const enteredPromoCode = promoCodeInput.value.trim().toLowerCase();
 
             // Replace "beaver" with the actual valid promo code
-            const validPromoCode = "invalid";
+            const validPromoCode = "savejorge";
 
             if (enteredPromoCode === validPromoCode) {
                 // Display the video link button
-                videoLink.style.display = "block";
-                totalPrice.style.display = "none";
+                videoLink.innerHTML = `
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" 
+                    style="text-decoration:none; display: flex; justify-content: center;">
+                        <button id="videobutton">Click on the T-Shirt</button>
+                    </a>
+                `;
                 warningMsg.textContent = "Promo code applied successfully!";
                 warningMsg.style.color = "#00cc00"; // Green color for success
+                totalPrice.innerHTML = '<button id="tshirtButton">Click the T-Shirt</button>';
+
+                // Enable t-shirt clickability
+                tshirtImage.style.cursor = "pointer";
+                tshirtImage.addEventListener("click", openVideoLink);
+
+                promoCodeEntered = true;
             } else {
                 // Hide the video link button and show warning message
                 videoLink.style.display = "none";
-                totalPrice.style.display = "block";
-                warningMsg.textContent = "Your promo code is invalid. Please try again.";
+                totalPrice.innerHTML = 'Total: $20.00';
+                warningMsg.textContent = "Sorry, please try again.";
                 warningMsg.style.color = "#cc0000"; // Red color for warning
+
+                // Disable t-shirt clickability
+                tshirtImage.style.cursor = "default";
+                tshirtImage.removeEventListener("click", openVideoLink);
+
+                promoCodeEntered = false;
             }
 
             // Clear the input field after applying or invalidating the promo code
             promoCodeInput.value = "";
         }
+
+        function openVideoLink() {
+            if (promoCodeEntered) {
+                window.open("newclue.html");
+            }
+        }
     </script>
 </body>
 </html>
+
