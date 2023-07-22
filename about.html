@@ -13,7 +13,33 @@
             text-align: center;
             margin-top: 50px;
         }
+        .start-button {
+            padding: 10px 20px;
+            font-size: 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
 
+        .prize-button {
+            padding: 10px 20px;
+            font-size: 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+    
         h1 {
             font-size: 48px;
             letter-spacing: 4px;
@@ -49,6 +75,7 @@
         }
 
         .top-secret-stamp {
+            display:none;
             position: absolute;
             top: 20px;
             left: 20px;
@@ -87,6 +114,11 @@
   .navigation-bar a {
     font-size: 16px;
   }
+  .start-button {
+                font-size: 20px;
+                padding: 10px 20px;
+                margin-top: 10px;
+            }
 }
 .navigation-bar a.active {
     color: #4CAF50; /* Change the color to green (#4CAF50) for the active link */
@@ -105,23 +137,16 @@
 
     <h1>About the Scavenger Hunt</h1>
     <p>
-        Welcome to the CAB Scavenger Hunt! Join us on an exciting adventure as we explore the jungle to solve clues, complete challenges, and unlock hidden treasures. Our hunt is designed to test your wit, teamwork, and creativity.
+        Welcome to the CAB Scavenger Hunt! Join us on an exciting adventure as we explore Babson's campus to solve clues, complete challenges, and unlock hidden prizes. Our hunt is designed to test your wit, teamwork, and creativity.
     </p>
-    <div class="image-container">
-        <div class="image-wrapper">
-            <img src="advisor.jpg" alt="Advisor">
-        </div>
-        <p>
-            Meet our amazing advisor who will guide you through the challenges and keep the excitement alive throughout the hunt.
-        </p>
+        <button class="start-button">THE PROMPT</button>
+        <p>Our beloved advisor, Jorge, has been framed for stealing 4 iPads from CAB and imprisoned somewhere in the jungle. To help him escape, you must unlock hidden clues around campus and collect all 10 stickers on your sticker sheet, found inside your team’s envelope along with some potential clues for now and later. At each location, teams will complete challenges to collect a sticker for their sticker cards AND unlock links to video clues that reveal the next location. Once you have claimed nine stickers, return to Knight Auditorium.</p>
     </div>
     <div class="image-container">
-        <div class="image-wrapper">
-            <img src="prize.jpg" alt="Prize">
+            <button class="start-button">THE PRIZE</button>
         </div>
         <p>
-            Feast your eyes on the grand prize that awaits the victorious team at the end of the scavenger hunt. Will you be the lucky winners?
-        </p>
+            The first team to do so will save Jorge and win the iPads. And anyone who completes the quest before 7PM, will also win CAB t-shirts.</p>
     </div>
 </body>
 </html>

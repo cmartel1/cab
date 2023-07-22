@@ -98,72 +98,83 @@ body {
     const logos = [
         { url: 'images/babson.png', name: 'babson beavers' },
         { url: 'images/jaguar.png', name: 'jacksonville jaguars' },
-        { url: 'images/monkey.png', name: 'surveymonkey' },
         { url: 'images/alligator.png', name: 'lacoste' },
     ];
-
+       
     let currentLogoIndex = 0;
-    let score = 0;
-    let videoDisplayed = false; // New variable to track if the video is displayed
+        let score = 0;
+        let videoDisplayed = false; // New variable to track if the video is displayed
 
-    function displayCurrentLogo() {
-        const logoImage = document.getElementById('logoImage');
-        logoImage.src = logos[currentLogoIndex].url;
-    }
-
-    function checkGuess() {
-        const guessInput = document.getElementById('guessInput');
-        const guess = guessInput.value.trim().toLowerCase();
-
-        const hiddenMessage = document.getElementById('hiddenMessage');
-        if (guess === logos[currentLogoIndex].name) {
-            hiddenMessage.textContent = 'Correct! You guessed the logo.';
-            score++;
-
-            // Move to the next logo
-            currentLogoIndex++;
-            if (currentLogoIndex < logos.length) {
-                displayCurrentLogo();
-            } else {
-                if (!videoDisplayed) { // Display the video only once
-                    displayYouTubeVideo();
-                    videoDisplayed = true;
-                    hideHiddenMessage(); // Hide the hidden message
-                }
-            }
-        } else {
-            hiddenMessage.textContent = 'Incorrect. Try again.';
+        function displayCurrentLogo() {
+            const logoImage = document.getElementById('logoImage');
+            logoImage.src = logos[currentLogoIndex].url;
         }
 
-        hiddenMessage.style.display = 'block';
-        guessInput.value = '';
-    }
+        function checkGuess() {
+            const guessInput = document.getElementById('guessInput');
+            const guess = guessInput.value.trim().toLowerCase();
 
-    function displayYouTubeVideo() {
-        const logoImage = document.getElementById('logoImage');
-        const guessInput = document.getElementById('guessInput');
-        const submitButton = document.querySelector('button');
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            if (guess === logos[currentLogoIndex].name) {
+                hiddenMessage.textContent = 'Correct! You guessed the logo.';
+                score++;
 
-        logoImage.style.display = 'none';
-        guessInput.style.display = 'none';
-        submitButton.style.display = 'none';
+                // Move to the next logo
+                currentLogoIndex++;
+                if (currentLogoIndex < logos.length) {
+                    displayCurrentLogo();
+                } else {
+                    if (!videoDisplayed) { // Display the video only once
+                        displayYouTubeVideo();
+                        videoDisplayed = true;
 
-        const youtubeVideo = document.createElement('iframe');
-        youtubeVideo.width = '560';
-        youtubeVideo.height = '315';
-        youtubeVideo.src = 'https://www.youtube.com/embed/your-youtube-video-id';
-        youtubeVideo.title = 'YouTube Video';
-        youtubeVideo.allowFullscreen = true;
-        document.body.appendChild(youtubeVideo);
-    }
+                        // Hide the logo, input, and submit button
+                        const logoImage = document.getElementById('logoImage');
+                        const guessInput = document.getElementById('guessInput');
+                        const submitButton = document.querySelector('button');
+                        logoImage.style.display = 'none';
+                        guessInput.style.display = 'none';
+                        submitButton.style.display = 'none';
 
-    function hideHiddenMessage() {
-        const hiddenMessage = document.getElementById('hiddenMessage');
-        hiddenMessage.style.display = 'none';
-    }
+                        // Hide the hidden message
+                        hiddenMessage.style.display = 'none';
+                    }
+                }
+            } else {
+                hiddenMessage.textContent = 'Incorrect. Try again.';
+                hiddenMessage.style.display = 'block'; // Show the hidden message for incorrect guesses
+            }
 
-    // Display the first logo on page load
-    displayCurrentLogo();
+            guessInput.value = '';
+        }
+
+        function displayYouTubeVideo() {
+            // Hide the logo and input elements
+            const logoImage = document.getElementById('logoImage');
+            const guessInput = document.getElementById('guessInput');
+            const submitButton = document.querySelector('button');
+            logoImage.style.display = 'none';
+            guessInput.style.display = 'none';
+            submitButton.style.display = 'none';
+
+            // Create and display the YouTube video iframe
+            const youtubeVideo = document.createElement('iframe');
+            youtubeVideo.width = '560';
+            youtubeVideo.height = '315';
+            youtubeVideo.src = 'https://www.youtube.com/embed/your-youtube-video-id';
+            youtubeVideo.title = 'YouTube Video';
+            youtubeVideo.allowFullscreen = true;
+            document.body.appendChild(youtubeVideo);
+        }
+        function hideHiddenMessage() {
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.style.display = 'none';
+        }
+
+        // Display the first logo on page load
+        displayCurrentLogo();
+    </script>
+    </script>
 </script>
 </body>
 </html>
