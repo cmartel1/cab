@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Secret Page</title>
     <style>
+        /* Top Secret CSS */
         body {
             font-family: "Courier New", monospace;
             margin: 0;
@@ -124,7 +125,7 @@
         </div>
         <div class="password-container">
             <input type="password" class="password-input" placeholder="Enter Password">
-            <button class="submit-button" onclick="checkPassword()">Submit</button>
+            <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
             <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
         </div>
     </div>
@@ -132,12 +133,13 @@
     <script>
         function checkPassword() {
             const enteredPassword = document.querySelector(".password-input").value;
-            const correctPassword = "topsecret"; // Replace with the correct password
+            const correctPassword = "password"; // Replace with the correct password
 
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
                 // Show the video
                 document.querySelector(".video-wrapper").style.display = "block";
+                window.location.href = "guesslogo.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";
