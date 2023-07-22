@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Logo</title>
+    <title>CAB Scavenger Hunt</title>
     <link rel="icon" href="images/favicon.ico">
     <style>
         body {
@@ -12,223 +11,268 @@
             background-color: #000;
             color: #fff;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 150px;
             position: relative;
         }
 
         h1 {
-            font-size: 36px;
-            letter-spacing: 2px;
-            line-height: 1.5;
+            font-size: 48px;
+            letter-spacing: 4px;
+            line-height: 1.2;
             margin-bottom: 20px;
-            margin-top: 90px;
         }
-
-        .logo-image {
-            width: 250px;
-            height: auto;
-            margin: 20px auto;
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
-
-        .logo-input {
-            padding: 10px;
-            font-size: 20px;
+        input[type=password] {
+            padding: 15px;
+            font-size: 24px;
             background-color: #222;
             color: #fff;
             border: 2px solid #444;
             border-radius: 5px;
+            width: 100%;
+            max-width: 300px; /* Limit the maximum width for larger screens */
+            margin: 10px auto; /* Center the input box */
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 20px;
+        button[type=submit] {
+            padding: 15px 30px;
+            font-size: 24px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 300px; /* Limit the maximum width for larger screens */
+            margin: 10px auto; /* Center the button */
         }
 
-        .hidden-message {
-            display: none;
-            font-size: 24px;
+        #errorMessage {
+            color: red;
             margin-top: 20px;
+            font-style: italic;
+        }
+
+        .top-secret-stamp {
+            position: absolute;
+            top: -100px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #f00;
+            padding: 4px 12px;
+            transform: rotate(-25deg);
+            opacity: 0.6;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .mobile-navigation {
+            display: none; /* Initially hide the navigation for non-mobile devices */
+        }
+
+        .mobile-navigation a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .top-secret-message {
+            font-size: 18px;
+            margin-top: 10px;
             color: #ff0;
             font-style: italic;
             text-shadow: 1px 1px 2px #000;
         }
 
-        .navigation-bar {
-            background-color: #fff;
-            padding: 10px;
+        .container {
             position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .container img {
+            height: 50px;
+            width: 60px;
+        }
+
+        .text {
+            color: #fff;
+            font-size: 20px;
+            margin-left: 10px;
+            padding-right: 15px;
+        }
+
+        .map-button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 180px; /* Adjust the right value to create space between the buttons */
+            display: flex;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 10px;
+            margin-right: 100px;
+            border-radius: 5px;
+        }
+
+        .map-button-container a {
+            text-decoration: none;
+        }
+
+        .container a {
+            text-decoration: none;
+        }
+
+        .map-button-container img {
+            height: 50px;
+            width: 60px;
+        }
+
+        .map-button-text {
+            color: #fff;
+            font-size: 20px;
+            margin-left: 10px;
+            padding-right: 15px;
+            text-decoration: none; /* Remove underline */
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
+            input[type=password] {
+                font-size: 20px;
+                padding: 10px;
+            }
+            button[type=submit] {
+                font-size: 20px;
+                padding: 10px 20px;
+            }
+            .top-secret-stamp {
+                font-size: 30px;
+                top: -80px;
+                padding: 2px 12px;
+            }
+            .top-secret-message {
+                font-size: 24px;
+            }
+            .envelope-text-container,
+            .map-button-container {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+            .clue-archive-text,
+            .map-button-text {
+                font-size: 16px;
+                margin-left: 5px;
+                text-decoration: none;
+            }
+            .button-group {
+                flex-direction: column;
+                bottom: 70px;
+                right: 10px;
+            }
+            .container {
+                position: static;
+                margin: 10px auto;
+                display: none;
+            }
+            .map-button-container {
+                display: none; /* Hide the map button on mobile screens */
+            }
+
+            .mobile-navigation {
+                display: flex;
+                justify-content: space-around;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: #4CAF50;
+                padding: 10px;
+                box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.5);
+            }
+
+            /* Show the text of the navigation links on mobile devices */
+            .mobile-navigation a {
+                font-size: 16px;
+            }
+
+            /* Add underline on hover for mobile navigation links */
+            .mobile-navigation a:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .envelope-link,
+        .map-link {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-
-        .navigation-bar a {
-            color: #000;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
-        .video-wrapper {
-            display: none;
-        }
-
-        .password-container {
-            display: none;
-        }
-
-        .password-input {
-            padding: 10px;
-            font-size: 18px;
-            background-color: #222;
-            color: #fff;
-            border: 2px solid #444;
-            border-radius: 5px;
-        }
-
-        .submit-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: #FFD700; /* Golden yellow */
-            color: #222;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-        }
-
-        .submit-button:hover {
-            background-color: #FFC300; /* Lighter golden yellow */
-        }
-
-        .warning-message {
-            color: #FF0000; /* Red */
-            font-size: 16px;
-            margin-top: 10px;
-            text-align: center;
-            display: none;
-            margin-bottom: 80px;
-        }
-
     </style>
 </head>
-
 <body>
-    <div class="navigation-bar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="envelope.html">Clues</a>
-        <a href="map.html">Map</a>
+<div class="top-secret-stamp">TOP SECRET</div>
+<h1>Welcome to the Jungle Quest<br>Scavenger Hunt</h1>
+<form id="passwordForm">
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button type="submit">Unlock First Clue</button>
+</form>
+<p id="errorMessage"></p>
+<div class="button-group">
+    <div class="container"> <a href="envelope.html">
+        <img src="images/envelope.png" alt="Envelope Icon"></a>
+        <a href="envelope.html"><p class="text">Clue Archive</p></a>
     </div>
-
-    <h1>Guess the Logo</h1>
-    <img src="images/babson.png" alt="Logo" class="logo-image" id="logoImage">
-    <br>
-    <input type="text" class="logo-input" id="guessInput" placeholder="Enter your guess">
-    <br>
-    <button type="button" onclick="checkGuess()">Submit</button>
-    <div class="hidden-message" id="hiddenMessage"></div>
-
-    <div class="video-wrapper" id="videoWrapper">
-        <!-- Video will be added dynamically here -->
+    <div class="map-button-container">
+        <a href="map.html">
+            <img src="images/map.png" alt="Map Icon">
+        </a>
+        <a href="map.html">
+        <p class="map-button-text">Map</p></a>
     </div>
+</div>
+<div class="mobile-navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="envelope.html">Clue Archive</a>
+    <a href="map.html">Map</a>
+</div>
+<script>
+    var passwordForm = document.getElementById("passwordForm");
+    var passwordInput = document.getElementById("passwordInput");
+    var errorMessage = document.getElementById("errorMessage");
 
-    <div class="password-container">
-        <input type="password" class="password-input" placeholder="Enter Password">
-        <button class="submit-button" onclick="checkPassword()">Unlock Next Clue</button>
-        <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
-    </div>
+    passwordForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
 
-    <script>
-        const logos = [
-            { url: 'images/babson.png', name: 'babson beavers' },
-            { url: 'images/jaguar.png', name: 'jacksonville jaguars' },
-            { url: 'images/alligator.png', name: 'lacoste' },
-        ];
+        var enteredPassword = passwordInput.value;
+        var correctPassword = "incorrect";
 
-        let currentLogoIndex = 0;
-        let score = 0;
-        let videoDisplayed = false; // New variable to track if the video is displayed
-
-        function displayCurrentLogo() {
-            const logoImage = document.getElementById('logoImage');
-            logoImage.src = logos[currentLogoIndex].url;
+        if (enteredPassword === correctPassword) {
+            window.location.href = "guesslogo.html"; 
+        } else {
+            errorMessage.textContent = "The password is incorrect.";
         }
-
-        function checkGuess() {
-            const guessInput = document.getElementById('guessInput');
-            const guess = guessInput.value.trim().toLowerCase();
-
-            const hiddenMessage = document.getElementById('hiddenMessage');
-            if (guess === logos[currentLogoIndex].name) {
-                hiddenMessage.textContent = 'Correct! You guessed the logo.';
-                score++;
-
-                // Move to the next logo
-                currentLogoIndex++;
-                if (currentLogoIndex < logos.length) {
-                    displayCurrentLogo();
-                } else {
-                    if (!videoDisplayed) { // Display the video only once
-                        displayYouTubeVideo();
-                        videoDisplayed = true;
-
-                        // Hide the logo, input, and submit button
-                        const logoImage = document.getElementById('logoImage');
-                        const guessInput = document.getElementById('guessInput');
-                        const submitButton = document.querySelector('button');
-                        logoImage.style.display = 'none';
-                        guessInput.style.display = 'none';
-                        submitButton.style.display = 'none';
-                        document.querySelector(".video-wrapper").style.display = "block"; // Show the YouTube video
-
-                        // Display the password container
-                        document.querySelector(".password-container").style.display = "block";
-                        // Hide the hidden message
-                        hiddenMessage.style.display = 'none';
-                    }
-                }
-            } else {
-                hiddenMessage.textContent = 'Incorrect. Try again.';
-                hiddenMessage.style.display = 'block'; // Show the hidden message for incorrect guesses
-            }
-
-            guessInput.value = '';
-        }
-
-        function displayYouTubeVideo() {
-            // Create and display the YouTube video iframe
-            const youtubeVideo = document.createElement('iframe');
-            youtubeVideo.width = '560';
-            youtubeVideo.height = '315';
-            youtubeVideo.src = 'https://www.youtube.com/embed/your-youtube-video-id';
-            youtubeVideo.title = 'YouTube Video';
-            youtubeVideo.allowFullscreen = true;
-            document.getElementById("videoWrapper").appendChild(youtubeVideo);
-        }
-
-        function checkPassword() {
-            const enteredPassword = document.querySelector(".password-input").value;
-            const correctPassword = "topsecret"; // Replace with the correct password
-
-            if (enteredPassword === correctPassword) {
-                document.querySelector(".warning-message").style.display = "none";
-            } else {
-                // Show the warning message
-                document.querySelector(".warning-message").style.display = "block";
-            }
-        }
-    </script>
+    });
+</script>
 </body>
-
 </html>

@@ -89,13 +89,13 @@
         .password-input {
             padding: 10px;
             font-size: 18px;
-            background-color: #526C52; /* Dark green */
-            color: #FFD700; /* Golden yellow */
-            border: 1px solid #526C52;
+            background-color: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 5px;
         }
 
         .submit-button {
-            display: none;
             padding: 10px 20px;
             font-size: 18px;
             font-weight: bold;
@@ -104,6 +104,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            border-radius: 5px;
         }
 
         .submit-button:hover {
@@ -138,13 +139,13 @@
     <button type="button" onclick="checkGuess()">Submit</button>
     <div class="hidden-message" id="hiddenMessage"></div>
 
-    <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/your-youtube-video-id" title="YouTube Video" allowfullscreen></iframe>
+    <div class="video-wrapper" id="videoWrapper">
+        <!-- Video will be added dynamically here -->
     </div>
 
     <div class="password-container">
         <input type="password" class="password-input" placeholder="Enter Password">
-        <button class="submit-button" onclick="checkPassword()">Submit</button>
+        <button class="submit-button" onclick="checkPassword()">Unlock Next Clue</button>
         <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
     </div>
 
@@ -191,6 +192,8 @@
                         submitButton.style.display = 'none';
                         document.querySelector(".video-wrapper").style.display = "block"; // Show the YouTube video
 
+                        // Display the password container
+                        document.querySelector(".password-container").style.display = "block";
                         // Hide the hidden message
                         hiddenMessage.style.display = 'none';
                     }
@@ -211,20 +214,15 @@
             youtubeVideo.src = 'https://www.youtube.com/embed/your-youtube-video-id';
             youtubeVideo.title = 'YouTube Video';
             youtubeVideo.allowFullscreen = true;
-            document.querySelector(".video-wrapper").appendChild(youtubeVideo);
-
-            // Display the password container
-            document.querySelector(".password-container").style.display = "block";
+            document.getElementById("videoWrapper").appendChild(youtubeVideo);
         }
 
         function checkPassword() {
             const enteredPassword = document.querySelector(".password-input").value;
-            const correctPassword = "password"; // Replace with the correct password
+            const correctPassword = "topsecret"; // Replace with the correct password
 
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
-                // Show the video
-                document.querySelector(".video-wrapper").style.display = "block";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";
