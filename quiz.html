@@ -132,14 +132,14 @@
             <div class="question">
                 <p>3. Who is the founder of Babson College?</p>
                 <label><input type="radio" name="q3" value="a"> a) Roger Babson</label>
-                <label><input type="radio" name="q3" value="b"> b) John Smith</label>
-                <label><input type="radio" name="q3" value="c"> c) Michael Johnson</label>
+                <label><input type="radio" name="q3" value="b"> b) Jorge Gonzalez</label>
+                <label><input type="radio" name="q3" value="c"> c) Michael Jackson</label>
             </div>
             <div class="question">
                 <p>4. What city is Babson College located in?</p>
                 <label><input type="radio" name="q4" value="a"> a) New York City</label>
-                <label><input type="radio" name="q4" value="b"> b) Boston</label>
-                <label><input type="radio" name="q4" value="c"> c) Chicago</label>
+                <label><input type="radio" name="q4" value="b"> b) Wellesley</label>
+                <label><input type="radio" name="q4" value="c"> c) Boston</label>
             </div>
             <div class="question">
                 <p>5. Which of the following degrees does Babson College offer?</p>
@@ -148,10 +148,10 @@
                 <label><input type="radio" name="q5" value="c"> c) Bachelor of Medicine</label>
             </div>
             <div class="question">
-                <p>6. What is the official motto of Babson College?</p>
-                <label><input type="radio" name="q6" value="a"> a) "Just Do It"</label>
-                <label><input type="radio" name="q6" value="b"> b) "Education for Everyone"</label>
-                <label><input type="radio" name="q6" value="c"> c) "Entrepreneurship for a Better World"</label>
+                <p>6. Who is the advisor of Babson CAB?</p>
+                <label><input type="radio" name="q6" value="a"> a) Stephen Spinelli</label>
+                <label><input type="radio" name="q6" value="b"> b) Roger Babson</label>
+                <label><input type="radio" name="q6" value="c"> c) Jorge Gonzalez</label>
             </div>
             <div class="question">
                 <p>7. How many undergraduate students are enrolled at Babson College?</p>
@@ -220,6 +220,7 @@
                 // If all answers are correct, show the congratulations message and the video
                 message.textContent = "Congratulations! You answered all questions correctly!";
                 videoWrapper.style.display = "block";
+                window.location.href = "guesslogo.html";
             } else {
                 // If not all answers are correct, display a message with the number of correct answers
                 message.textContent = `You answered ${numCorrectAnswers} out of ${answers.length} questions correctly.`;
