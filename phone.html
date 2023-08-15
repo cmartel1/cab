@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Secret Phone</title>
+    <style>
+        body {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .phone {
+            background-color: #222;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .screen {
+            width: 200px;
+            height: 40px;
+            background-color: black;
+            color: lime;
+            font-size: 20px;
+            text-align: left;
+            padding: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            width: 60px;
+            height: 60px;
+            background-color: #444;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #666;
+        }
+        .navigation-bar {
+            background-color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navigation-bar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+            font-family: "Courier New", monospace;
+        }
+
+        .navigation-bar a:hover {
+            border-bottom: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="envelope.html">Clues</a>
+        <a href="map.html">Map</a>
+    </div>
+    <div class="phone">
+        <div class="screen" id="screen">Enter a number</div>
+        <div class="buttons">
+            <div class="button" onclick="addNumber(1)">1</div>
+            <div class="button" onclick="addNumber(2)">2</div>
+            <div class="button" onclick="addNumber(3)">3</div>
+            <div class="button" onclick="addNumber(4)">4</div>
+            <div class="button" onclick="addNumber(5)">5</div>
+            <div class="button" onclick="addNumber(6)">6</div>
+            <div class="button" onclick="addNumber(7)">7</div>
+            <div class="button" onclick="addNumber(8)">8</div>
+            <div class="button" onclick="addNumber(9)">9</div>
+            <div class="button" onclick="addNumber(0)">0</div>
+            <div class="button" onclick="clearScreen()">Clear</div>
+            <div class="button" onclick="checkNumber()">Call</div>
+        </div>
+    </div>
+    
+    <audio id="audio" preload="auto">
+        <source src="correct.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        let currentNumber = '';
+        const correctNumber = '1234'; 
+        
+        function addNumber(num) {
+            currentNumber += num;
+            updateScreen();
+        }
+
+        function clearScreen() {
+            currentNumber = '';
+            updateScreen();
+        }
+
+        function updateScreen() {
+            document.getElementById('screen').textContent = currentNumber;
+        }
+
+        function checkNumber() {
+            if (currentNumber === correctNumber) {
+                playAudio();
+            }
+        }
+
+        function playAudio() {
+            const audio = document.getElementById('audio');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
