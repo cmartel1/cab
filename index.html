@@ -265,10 +265,38 @@
         event.preventDefault(); // Prevent form submission
 
         var enteredPassword = passwordInput.value;
-        var correctPassword = "incorrect";
+        var PasswordA ="Colby";
+        var PasswordB ="Jorge";
+        var PasswordC ="Adrian";
+        var PasswordD ="Ava";
+        var PasswordE ="Saba";
+        var PasswordF ="Jade";
+        var PasswordG ="Ilkan";
+        var PasswordH ="Corey";
 
-        if (enteredPassword === correctPassword) {
-            window.location.href = "publicsafetyclue.html"; 
+        if (enteredPassword === PasswordA) {
+            window.location.href = "publicsafetyclue.html"; //topublicsafety
+        }
+        if (enteredPassword === PasswordB) {
+            window.location.href = "trimclue.html"; //totrim
+        }
+        if (enteredPassword === PasswordC) {
+            window.location.href = "puzzleclue.html"; //toweissman
+        }
+        if (enteredPassword === PasswordD) {
+            window.location.href = "rubiksclue.html"; //toreys
+        }
+        if (enteredPassword === PasswordE) {
+            window.location.href = "quiz.html"; //tohorn
+        }
+        if (enteredPassword === PasswordF) {
+            window.location.href = "guesslogo.html"; //towest
+        }
+        if (enteredPassword === PasswordG) {
+            window.location.href = "linkgame.html"; //towinn
+        }
+        if (enteredPassword === PasswordH) {
+            window.location.href = "voicemail.html"; //tolgrac
         } else {
             errorMessage.textContent = "The password is incorrect.";
         }
