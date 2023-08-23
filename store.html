@@ -300,7 +300,7 @@ h1 {
             const enteredPromoCode = promoCodeInput.value.trim().toLowerCase();
 
             // Replace "beaver" with the actual valid promo code
-            const validPromoCode = "savejorge";
+            const validPromoCode = "incorrect";
 
             if (enteredPromoCode === validPromoCode) {
                 // Display the video link button
@@ -323,7 +323,7 @@ h1 {
                 // Hide the video link button and show warning message
                 videoLink.style.display = "none";
                 totalPrice.innerHTML = 'Total: $20.00';
-                warningMsg.textContent = "Sorry, please try again.";
+                warningMsg.textContent = "The promo code is incorrect.";
                 warningMsg.style.color = "#cc0000"; // Red color for warning
 
                 // Disable t-shirt clickability
@@ -339,7 +339,7 @@ h1 {
 
         function openVideoLink() {
             if (promoCodeEntered) {
-                window.open("dictionaryclue.html");
+                window.open("quiz.html");
             }
         }
     </script>
