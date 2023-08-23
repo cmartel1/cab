@@ -146,34 +146,32 @@
         <a href="map.html">Map</a>
     </div>
     <div class="clue-container">
-    <h1 class="clue-heading">Clue</h1>
-    <div class="secret-message">
-        <p class="scramble">Now you must visit a <span>place</span><br>
-            Where newcomers dwell<br>
-            In order to <span>release</span> Jorge<br>
-            From his jungle cell<br><br>
-            It’s a nice <span>place</span> to rest<br>
-            And even sounds like best</p>
-    </div>
-    <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
-    <div class="password-container">
-        <input type="password" class="password-input" placeholder="Enter Password">
-        <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
-        <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
-    </div>
-</div>
+        <h1 class="clue-heading">Clue</h1>
+        <div class="secret-message">
+            <p class="scramble">Now you must visit a <span>place</span><br>
+                Where newcomers dwell<br>
+                In order to <span>release</span> Jorge<br>
+                From his jungle cell<br><br>
+                It’s a nice <span>place</span> to rest<br>
+                And even sounds like best</p>
+        </div>
+        <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
+        <div class="password-container">
+            <input type="password" class="password-input" id="passwordInput" placeholder="Enter Password">
+            <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
+            <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
+        </div>
     </div>
 
     <script>
         function checkPassword() {
-            const enteredPassword = document.querySelector(".password-input").value;
+            const enteredPassword = document.getElementById("passwordInput").value;
             const correctPassword = "password"; // Replace with the correct password
-
+    
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
-                // Show the video
-                document.querySelector(".video-wrapper").style.display = "block";
-                window.location.href = "locationG.html";
+                // Redirect to locationE.html
+                window.location.href = "locationE.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";

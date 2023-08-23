@@ -156,22 +156,20 @@
     </div>
     <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
     <div class="password-container">
-        <input type="password" class="password-input" placeholder="Enter Password">
+        <input type="password" class="password-input" id="passwordInput" placeholder="Enter Password">
         <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
         <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
     </div>
 </div>
     </div>
-
     <script>
         function checkPassword() {
-            const enteredPassword = document.querySelector(".password-input").value;
+            const enteredPassword = document.getElementById("passwordInput").value;
             const correctPassword = "password"; // Replace with the correct password
-
+    
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
-                // Show the video
-                document.querySelector(".video-wrapper").style.display = "block";
+                // Redirect to locationE.html
                 window.location.href = "locationH.html";
             } else {
                 // Show the warning message

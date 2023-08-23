@@ -162,17 +162,15 @@
     </div>
 </div>
     </div>
-
     <script>
         function checkPassword() {
-            const enteredPassword = document.querySelector(".password-input").value;
+            const enteredPassword = document.getElementById("passwordInput").value;
             const correctPassword = "password"; // Replace with the correct password
-
+    
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
-                // Show the video
-                document.querySelector(".video-wrapper").style.display = "block";
-                window.location.href = "voicemail.html";
+                // Redirect to locationE.html
+                window.location.href = "video.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";
