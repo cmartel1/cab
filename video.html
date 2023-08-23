@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Secret Video</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-top: 50px;
+            letter-spacing: 4px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        input[type=password] {
+            padding: 15px;
+            font-size: 24px;
+            background-color: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        .submit-button {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #FFD700; /* Golden yellow */
+            color: #222;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .submit-button:hover {
+            background-color: #FFC300; /* Lighter golden yellow */
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 36px;
+            }
+            input[type=password] {
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+        
+
+        .navigation-bar {
+            background-color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navigation-bar a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .navigation-bar a:hover {
+            border-bottom: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Secret Video</h1>
+    <div class="navigation-bar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="envelope.html">Clues</a>
+        <a href="map.html">Map</a>
+    </div>
+    <div class="video-container">
+        <iframe width="700" height="400" src="https://www.youtube.com/embed/qjYxng3vETc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <form id="passwordForm">
+        <div class="form-container">
+            <input type="password" id="passwordInput" placeholder="Enter password" />
+            <button type="submit" class="submit-button">Unlock Next Clue</button>
+        </div>
+    </form>
+    <p id="errorMessage"></p>
+    <script>
+        const form = document.getElementById("passwordForm");
+        const passwordInput = document.getElementById("passwordInput");
+        const errorMessage = document.getElementById("errorMessage");
+
+        const correctPassword = "tacos"; // Replace with the correct password
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === correctPassword) {
+                errorMessage.textContent = "";
+                // Redirect to the next page
+                window.location.href = "locationE.html";
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+        });
+    </script>
+</body>
+</html>

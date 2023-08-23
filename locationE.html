@@ -50,7 +50,7 @@
             margin-top: 20px;
         }
 
-        .hidden-message {
+        .clue {
             display: none;
             font-size: 24px;
             margin-top: 20px;
@@ -78,10 +78,6 @@
             font-size: 18px;
         }
 
-        .video-wrapper {
-            display: none;
-        }
-
         .password-container {
             display: none;
         }
@@ -99,7 +95,7 @@
             padding: 10px 20px;
             font-size: 18px;
             font-weight: bold;
-            background-color: #FFD700; /* Golden yellow */
+            background-color: #FFD700;
             color: #222;
             border: none;
             cursor: pointer;
@@ -108,11 +104,11 @@
         }
 
         .submit-button:hover {
-            background-color: #FFC300; /* Lighter golden yellow */
+            background-color: #FFC300;
         }
 
         .warning-message {
-            color: #FF0000; /* Red */
+            color: #FF0000;
             font-size: 16px;
             margin-top: 10px;
             text-align: center;
@@ -126,7 +122,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="navigation-bar">
         <a href="index.html">Home</a>
@@ -140,16 +135,10 @@
         <img src="images/babson.png" alt="Logo" class="logo-image" id="logoImage">
     </div>
     <div id="guessContainer">
+        <div class="clue" id="logoClue"> </div>
         <input type="text" class="logo-input" id="guessInput" placeholder="Enter your guess">
         <br>
         <button type="button" onclick="checkGuess()">Submit</button>
-        <div class="hidden-message" id="hiddenMessage"></div>
-    </div>
-
-    <div class="password-container">
-        <input type="password" class="password-input" placeholder="Enter Password">
-        <button class="submit-button" onclick="checkPassword()">Unlock Next Clue</button>
-        <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
     </div>
 
     <script>
@@ -161,7 +150,7 @@
 
         let currentLogoIndex = 0;
         let score = 0;
-        let lacosteGuessed = false;
+        let allCorrect = false;
 
         function displayCurrentLogo() {
             const logoImage = document.getElementById('logoImage');
@@ -172,46 +161,28 @@
             const guessInput = document.getElementById('guessInput');
             const guess = guessInput.value.trim().toLowerCase();
 
-            const hiddenMessage = document.getElementById('hiddenMessage');
+            const logoClue = document.getElementById('logoClue');
             if (guess === logos[currentLogoIndex].name) {
-                if (logos[currentLogoIndex].name === 'lacoste') {
-                    lacosteGuessed = true;
-                    document.getElementById('logoContainer').style.display = 'none';
-                    document.getElementById('guessContainer').style.display = 'none';
-                } else {
-                    hiddenMessage.textContent = 'Correct! You guessed the logo.';
-                    score++;
+                score++;
 
-                    // Move to the next logo
-                    currentLogoIndex++;
-                    if (currentLogoIndex < logos.length) {
-                        displayCurrentLogo();
-                    }
+                // Move to the next logo
+                currentLogoIndex++;
+                if (currentLogoIndex < logos.length) {
+                    displayCurrentLogo();
+                } else {
+                    const logoContainer = document.getElementById('logoContainer');
+                    const guessContainer = document.getElementById('guessContainer');
+                    logoContainer.style.display = 'none';
+                    guessContainer.style.display = 'none';
+                    allCorrect = true;
+                    logoClue.textContent = 'Hello!';
+                    setTimeout(() => {
+                        window.location.href = "locationF.html";
+                    }, 0); 
                 }
-            } else {
-                hiddenMessage.textContent = 'Incorrect. Try again.';
             }
 
             guessInput.value = '';
-        }
-
-        function checkPassword() {
-            const enteredPassword = document.querySelector(".password-input").value;
-            const correctPassword = "password"; // Replace with the correct password
-
-            if (enteredPassword === correctPassword) {
-                document.querySelector(".warning-message").style.display = "none";
-                // Display the hidden message if lacoste was guessed
-                if (lacosteGuessed) {
-                    const hiddenMessage = document.getElementById('hiddenMessage');
-                  
-                    hiddenMessage.style.display = 'block';
-                }
-                document.querySelector(".password-container").style.display = "none";
-            } else {
-                // Show the warning message
-                document.querySelector(".warning-message").style.display = "block";
-            }
         }
     </script>
 </body>

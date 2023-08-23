@@ -42,9 +42,6 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .hint-button-container {
-            text-align: center;
-        }
         .clue-heading {
             font-size: 36px;
             font-weight: bold;
@@ -97,31 +94,48 @@
             transform: scale(1.05); /* Reset rotation on hover */
             color: #4CAF50; /* Change color to green on hover */
         }
-        
-        .hint-button {
+        .password-container {
+            text-align: center;
             margin-top: 30px;
+        }
+
+        .password-input {
+            padding: 10px;
             font-size: 18px;
+            background-color: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
             background-color: #FFD700; /* Golden yellow */
             color: #222;
             border: none;
             cursor: pointer;
-            padding: 10px 20px;
+            transition: background-color 0.3s;
             border-radius: 5px;
             outline: none;
-            transition: background-color 0.3s;
         }
 
-        .hint-button:hover {
+        .submit-button:hover {
             background-color: #FFC300; /* Lighter golden yellow */
         }
 
-        .hint-text {
+        .warning-message {
+            color: #FF0000; /* Red */
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
             display: none;
-            font-size: 18px;
-            margin-top: 20px;
-            color: #FFD700; /* Golden yellow */
+            margin-bottom: 80px;
         }
-        
+
+
     </style>
 </head>
 <body>
@@ -134,47 +148,34 @@
     <div class="clue-container">
     <h1 class="clue-heading">Clue</h1>
     <div class="secret-message">
-        <p class="scramble"><span>n</span>I teh <span>g</span>us'jeln dimts, <span>h</span>wree nuhreg <span>is</span> atmed</p><br>
-        <p class="scramble"><span>A</span> lcue <span>a</span>awtis, <span>c</span>everlly <span>d</span>fraem.</p><br>
-        <p class="scramble"><span>O</span>n hte <span>d</span>roo wehre <span>ss</span>suienb <span>si</span> dnoe, </p><br>
-        <p class="scramble"><span>oG</span> raed ti to <span>cnontiue</span> the <span>f</span>nu.</p>
-    </div>
-    <div class="hint-button-container">
-        <div class="input-container">
-    <button class="hint-button" onclick="showHint()">Hint</button>
-        <input type="text" class="secret-input" placeholder="Search" onkeypress="checkEnter(event)">
-    </div>
-    <div class="hint-text" id="hintText">
-        Unscramble the clue to reveal the next location.<br>At this location, investigate the artifact to uncover the next webpage.
+        <p class="scramble">The next building is unique<br>
+            For those who graduate<br>
+            Down the <span>stairs</span><br>
+            Your next clue will await
+            
     </div>
     <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
-
+    <div class="password-container">
+        <input type="password" class="password-input" placeholder="Enter Password">
+        <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
+        <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
+    </div>
+</div>
     </div>
 
     <script>
-        function showHint() {
-            const hintText = document.getElementById('hintText');
-            if (hintText.style.display === 'none') {
-                hintText.style.display = 'block';
-            } else {
-                hintText.style.display = 'none';
-            }
-        }
-        function checkEnter(event) {
-            if (event.keyCode === 13) {
-                checkPassword();
-            }
-        }
-
         function checkPassword() {
-            const enteredPassword = document.querySelector(".secret-input").value;
-            const correctPassword = "password.com"; 
-            const warningMessage = document.getElementById('warningMsg');
+            const enteredPassword = document.querySelector(".password-input").value;
+            const correctPassword = "password"; // Replace with the correct password
 
             if (enteredPassword === correctPassword) {
-                window.location.href = "rubiksclue.html"; // Redirect to the puzzle.html page
+                document.querySelector(".warning-message").style.display = "none";
+                // Show the video
+                document.querySelector(".video-wrapper").style.display = "block";
+                window.location.href = "locationH.html";
             } else {
-                warningMessage.style.display = "block";
+                // Show the warning message
+                document.querySelector(".warning-message").style.display = "block";
             }
         }
     </script>

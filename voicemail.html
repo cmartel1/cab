@@ -16,24 +16,25 @@
         }
 
         .phone {
-            background-color: #222;
-            border-radius: 20px;
+            background-color: #333;
+            border-radius: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            width: 250px;
         }
 
         .screen {
-            width: 200px;
-            height: 40px;
+            width: 220px;
+            height: 50px;
             background-color: black;
             color: lime;
             font-size: 20px;
             text-align: left;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 10px;
             overflow: hidden;
         }
@@ -45,15 +46,16 @@
         }
 
         .button {
-            width: 60px;
+            width: 80px;
             height: 60px;
             background-color: #444;
             color: white;
             font-size: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-radius: 50%;
+            border-radius: 20px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -61,6 +63,13 @@
         .button:hover {
             background-color: #666;
         }
+
+        .button span {
+            font-size: 14px;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
         .navigation-bar {
             background-color: #fff;
             padding: 10px;
@@ -85,12 +94,24 @@
             border-bottom: 2px solid #4CAF50;
             color: #4CAF50;
         }
-        
+
         .error-message {
             color: red;
             font-size: 14px;
             margin-top: 10px;
             display: none;
+        }
+
+        .next-link {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            left: 50%;
+            color: white;
+        }
+        a{
+            text-decoration: none;
+color: white;
         }
     </style>
 </head>
@@ -102,32 +123,58 @@
         <a href="map.html">Map</a>
     </div>
     <div class="phone">
-        <div class="screen" id="screen">Enter a number</div>
+        <div class="screen" id="screen"></div>
         <div class="buttons">
-            <div class="button" onclick="addNumber(1)">1</div>
-            <div class="button" onclick="addNumber(2)">2</div>
-            <div class="button" onclick="addNumber(3)">3</div>
-            <div class="button" onclick="addNumber(4)">4</div>
-            <div class="button" onclick="addNumber(5)">5</div>
-            <div class="button" onclick="addNumber(6)">6</div>
-            <div class="button" onclick="addNumber(7)">7</div>
-            <div class="button" onclick="addNumber(8)">8</div>
-            <div class="button" onclick="addNumber(9)">9</div>
-            <div class="button" onclick="addNumber(0)">0</div>
-            <div class="button" onclick="clearScreen()">Clear</div>
-            <div class="button" onclick="checkNumber()">Call</div>
+            <div class="button" onclick="addNumber(1)">
+                1<span>ABC</span>
+            </div>
+            <div class="button" onclick="addNumber(2)">
+                2<span>DEF</span>
+            </div>
+            <div class="button" onclick="addNumber(3)">
+                3<span>GHI</span>
+            </div>
+            <div class="button" onclick="addNumber(4)">
+                4<span>JKL</span>
+            </div>
+            <div class="button" onclick="addNumber(5)">
+                5<span>MNO</span>
+            </div>
+            <div class="button" onclick="addNumber(6)">
+                6<span>PQR</span>
+            </div>
+            <div class="button" onclick="addNumber(7)">
+                7<span>STU</span>
+            </div>
+            <div class="button" onclick="addNumber(8)">
+                8<span>VWX</span>
+            </div>
+            <div class="button" onclick="addNumber(9)">
+                9<span>YZ</span>
+            </div>
+            <div class="button" onclick="clearScreen()">
+                Clear<span></span>
+            </div>
+            <div class="button" onclick="addNumber(0)">
+                0<span></span>
+            </div>
+            <div class="button" onclick="checkNumber()">
+                Call<span></span>
+            </div>
         </div>
         <div class="error-message" id="error-message">This number does not exist.</div>
-    </div>
-    
+        <div class="next-link" id="next-link">
+            <a href="locationE.html">Click Me</a>
+        </div>
     <audio id="audio" preload="auto" style="display: none;">
         <source src="voicemail.mp3" type="audio/mpeg">
     </audio>
-    
+
     <script>
         let currentNumber = '';
-        const correctNumber = '1234'; 
-        
+        const correctNumberA = '1234'; 
+        const correctNumberB = '4321';
+
         function addNumber(num) {
             currentNumber += num;
             updateScreen();
@@ -143,30 +190,31 @@
         }
 
         function checkNumber() {
-            if (currentNumber === correctNumber) {
+            if (currentNumber === correctNumberA) {
                 playAudio();
-                showAudioElement();
+            } else if (currentNumber === correctNumberB) {
+                showNextLink();
             } else {
                 showError();
             }
         }
-
+        
         function playAudio() {
             const audio = document.getElementById('audio');
             audio.play();
         }
-
-        function showAudioElement() {
-            const audioElement = document.getElementById('audio');
-            audioElement.style.display = 'block';
-        }
-
+        
         function showError() {
             const errorMessage = document.getElementById('error-message');
             errorMessage.style.display = 'block';
             setTimeout(() => {
                 errorMessage.style.display = 'none';
             }, 3000);
+        }
+        
+        function showNextLink() {
+            const nextLink = document.getElementById('next-link');
+            nextLink.style.display = 'block';
         }
     </script>
 </body>
