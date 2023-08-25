@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Secret Clue</title>
+    <link rel="icon" href="images/favicon.ico">
     <style>
         body {
             font-family: "Courier New", monospace;
@@ -148,10 +149,10 @@
     <div class="clue-container">
     <h1 class="clue-heading">Clue</h1>
     <div class="secret-message">
-        <p class="scramble">The next building is unique<br>
-            For those who graduate<br>
-            Down the <span>stairs</span><br>
-            Your next clue will await
+        <p class="scramble">To find the next location along your route<br>
+            Visit the building <span>where</span> students workout<br>
+            Step onto the <span>court</span> and make sure to aim<br>
+            To unlock the next clue that you want to claim<br>
             
     </div>
     <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
@@ -162,6 +163,7 @@
     </div>
 </div>
     </div>
+
     <script>
         function checkPassword() {
             const enteredPassword = document.getElementById("passwordInput").value;
@@ -170,7 +172,7 @@
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
                 // Redirect to locationE.html
-                window.location.href = "locationH.html";
+                window.location.href = "store.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Secret Clue</title>
+    <link rel="icon" href="images/favicon.ico">
     <style>
         body {
             font-family: "Courier New", monospace;
@@ -146,21 +147,20 @@
         <a href="map.html">Map</a>
     </div>
     <div class="clue-container">
-    <h1 class="clue-heading">Clue</h1>
-    <div class="secret-message">
-        <p class="scramble">Deep into the jungle air<br>
-            A challenge awaits <span>beyond</span> compare<br>
-            Step onto the <span>court</span> and make sure to aim<br>
-            To unlock the next clue that you want claim<br>
-            
-    </div>
-    <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
-    <div class="password-container">
-        <input type="password" class="password-input" id="passwordInput" placeholder="Enter Password">
-        <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
-        <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
-    </div>
-</div>
+        <h1 class="clue-heading">Clue</h1>
+        <div class="secret-message">
+            <p class="scramble">The next building has many <span>stories</span><br>
+                And is quiet on top<br>
+                It's also where you should go<br>
+                For your next stop<br>
+        </div>
+
+        <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
+        <div class="password-container">
+            <input type="password" class="password-input" id="passwordInput" placeholder="Enter Password">
+            <button class="submit-button" onclick="checkPassword()">Unlock the Next Clue</button>
+            <p class="warning-message" id="warningMsg">Incorrect password. Please try again.</p>
+        </div>
     </div>
 
     <script>
@@ -171,7 +171,7 @@
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
                 // Redirect to locationE.html
-                window.location.href = "store.html";
+                window.location.href = "logo.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";

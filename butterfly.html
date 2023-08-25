@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Secret Phone</title>
+    <link rel="icon" href="images/favicon.ico">
     <style>
         body {
             background-color: #333;
@@ -164,7 +165,7 @@ color: white;
         </div>
         <div class="error-message" id="error-message">This number does not exist.</div>
         <div class="next-link" id="next-link">
-            <a href="locationE.html">Click Me</a>
+            <a href="quiz.html">Click Me</a>
         </div>
     <audio id="audio" preload="auto" style="display: none;">
         <source src="voicemail.mp3" type="audio/mpeg">
@@ -172,8 +173,8 @@ color: white;
 
     <script>
         let currentNumber = '';
-        const correctNumberA = '1234'; 
-        const correctNumberB = '4321';
+        const correctNumberA = '2484345508'; 
+        const correctNumberB = '18775277454';
 
         function addNumber(num) {
             currentNumber += num;

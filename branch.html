@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Secret Clue</title>
     <link rel="icon" href="images/favicon.ico">
+    <title>Top Secret Clue</title>
     <style>
         body {
             font-family: "Courier New", monospace;
@@ -149,10 +149,10 @@
     <div class="clue-container">
     <h1 class="clue-heading">Clue</h1>
     <div class="secret-message">
-        <p class="scramble">In a jungle’s domain, safety is <span>key</span><br>
-            Your next clue is where officers oversee<br>
-            The next challenge is not too hard<br>
-            Just make sure to check your card<br>
+        <p class="scramble">Next you’ll work as a <span>team</span><br>
+            To <span>unveil</span> your next hint<br>
+            In a collaborative <span>space</span><br>
+            Where you can build and <span>color</span> print<br>
             </p>
     </div>
     <p class="warning-message" id="warningMsg" style="display: none; color: red;">Incorrect password. Please try again.</p>
@@ -163,7 +163,6 @@
     </div>
 </div>
     </div>
-
     <script>
         function checkPassword() {
             const enteredPassword = document.getElementById("passwordInput").value;
@@ -172,7 +171,7 @@
             if (enteredPassword === correctPassword) {
                 document.querySelector(".warning-message").style.display = "none";
                 // Redirect to locationE.html
-                window.location.href = "bathtub.html";
+                window.location.href = "butterfly.html";
             } else {
                 // Show the warning message
                 document.querySelector(".warning-message").style.display = "block";
