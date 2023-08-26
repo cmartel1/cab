@@ -238,9 +238,9 @@
 </form>
 <p id="errorMessage"></p>
 <div class="button-group">
-    <div class="container"> <a href="envelope.html">
+    <div class="container"> <a href="comingsoon.html">
         <img src="images/envelope.png" alt="Envelope Icon"></a>
-        <a href="envelope.html"><p class="text">Clue Archive</p></a>
+        <a href="comingsoon.html"><p class="text">Clue Archive</p></a>
     </div>
     <div class="map-button-container">
         <a href="map.html">
@@ -253,7 +253,7 @@
 <div class="mobile-navigation">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="envelope.html">Clue Archive</a>
+    <a href="comingsoon.html">Clue Archive</a>
     <a href="map.html">Map</a>
 </div>
 <script>
@@ -266,13 +266,14 @@
 
         var enteredPassword = passwordInput.value;
         var PasswordA ="BACON";
-        var PasswordB ="BRANCH";
-        var PasswordC ="FIREPLACE";
-        var PasswordD ="SEASON";
-        var PasswordE ="BUTTERFLY";
-        var PasswordF ="TENDER";
-        var PasswordG ="BATHTUB";
-        var PasswordH ="ELBOW";
+        var PasswordB ="BATHTUB";
+        var PasswordC ="BRANCH";
+        var PasswordD ="BUTTERFLY";
+        var PasswordE ="ELBOW";
+        var PasswordF ="FIREPLACE";
+        var PasswordG ="SEASON";
+        var PasswordH ="TENDER";
+        var PasswordI = "incorrect";
 
         if (enteredPassword === PasswordA) {
             window.location.href = "bacon.html"; //topublicsafety
@@ -287,17 +288,21 @@
             window.location.href = "butterfly.html"; //toreys
         }
         if (enteredPassword === PasswordE) {
-            window.location.href = "elbow.html"; //tohorn
+            window.location.href = "quiz.html"; //tohorn
         }
         if (enteredPassword === PasswordF) {
-            window.location.href = "fireplace.html"; //towest
+            window.location.href = "logo.html"; //towest
         }
         if (enteredPassword === PasswordG) {
             window.location.href = "season.html"; //towinn
         }
         if (enteredPassword === PasswordH) {
             window.location.href = "tender.html"; //tolgrac
-        } else {
+        }
+        if (enteredPassword === PasswordI) {
+            window.location.href = "congrats.html";
+        }
+        else {
             errorMessage.textContent = "The password is incorrect.";
         }
     });
