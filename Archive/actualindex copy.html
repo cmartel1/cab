@@ -231,12 +231,30 @@
 </head>
 <body>
 <div class="top-secret-stamp">TOP SECRET</div>
-<h1>Guess the Next Password</h1>
+<h1>Enter Your First Password</h1>
 <form id="passwordForm">
     <input type="password" id="passwordInput" placeholder="Enter password" />
     <button type="submit">Unlock First Clue</button>
 </form>
 <p id="errorMessage"></p>
+<div class="button-group">
+    <div class="container"> <a href="envelope.html">
+        <img src="images/envelope.png" alt="Envelope Icon"></a>
+        <a href="envelope.html"><p class="text">Clue Archive</p></a>
+    </div>
+    <div class="map-button-container">
+        <a href="map.html">
+            <img src="images/map.png" alt="Map Icon">
+        </a>
+        <a href="map.html">
+        <p class="map-button-text">Map</p></a>
+    </div>
+</div>
+<div class="mobile-navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="envelope.html">Clue Archive</a>
+    <a href="map.html">Map</a>
 </div>
 <script>
     var passwordForm = document.getElementById("passwordForm");
@@ -247,7 +265,14 @@
         event.preventDefault(); // Prevent form submission
 
         var enteredPassword = passwordInput.value;
-        var PasswordA ="incorrect";
+        var PasswordA ="BACON";
+        var PasswordB ="BATHTUB";
+        var PasswordC ="BRANCH";
+        var PasswordD ="BUTTERFLY";
+        var PasswordE ="ELBOW";
+        var PasswordF ="FIREPLACE";
+        var PasswordG ="SEASON";
+        var PasswordH ="TENDER";
 
         if (enteredPassword === PasswordA) {
             window.location.href = "bacon.html"; //topublicsafety

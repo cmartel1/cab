@@ -231,12 +231,30 @@
 </head>
 <body>
 <div class="top-secret-stamp">TOP SECRET</div>
-<h1>Guess the Next Password</h1>
+<h1>Welcome to the Jungle Quest<br>Scavenger Hunt</h1>
 <form id="passwordForm">
     <input type="password" id="passwordInput" placeholder="Enter password" />
     <button type="submit">Unlock First Clue</button>
 </form>
 <p id="errorMessage"></p>
+<div class="button-group">
+    <div class="container"> <a href="envelope.html">
+        <img src="images/envelope.png" alt="Envelope Icon"></a>
+        <a href="envelope.html"><p class="text">Clue Archive</p></a>
+    </div>
+    <div class="map-button-container">
+        <a href="map.html">
+            <img src="images/map.png" alt="Map Icon">
+        </a>
+        <a href="map.html">
+        <p class="map-button-text">Map</p></a>
+    </div>
+</div>
+<div class="mobile-navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="envelope.html">Clue Archive</a>
+    <a href="map.html">Map</a>
 </div>
 <script>
     var passwordForm = document.getElementById("passwordForm");
@@ -247,31 +265,10 @@
         event.preventDefault(); // Prevent form submission
 
         var enteredPassword = passwordInput.value;
-        var PasswordA ="incorrect";
+        var PasswordI = "incorrect";
 
-        if (enteredPassword === PasswordA) {
-            window.location.href = "bacon.html"; //topublicsafety
-        }
-        if (enteredPassword === PasswordB) {
-            window.location.href = "bathtub.html"; //totrim
-        }
-        if (enteredPassword === PasswordC) {
-            window.location.href = "branch.html"; //toweissman
-        }
-        if (enteredPassword === PasswordD) {
-            window.location.href = "butterfly.html"; //toreys
-        }
-        if (enteredPassword === PasswordE) {
-            window.location.href = "quiz.html"; //tohorn
-        }
-        if (enteredPassword === PasswordF) {
-            window.location.href = "logo.html"; //towest
-        }
-        if (enteredPassword === PasswordG) {
-            window.location.href = "season.html"; //towinn
-        }
-        if (enteredPassword === PasswordH) {
-            window.location.href = "tender.html"; //tolgrac
+        if (enteredPassword === PasswordI) {
+            window.location.href = "actualindex.html";
         }
         else {
             errorMessage.textContent = "The password is incorrect.";
