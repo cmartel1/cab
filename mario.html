@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Power-Ups</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: orange; 
+            color: black;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        #cases {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .case-row {
+            display: flex;
+            flex-basis: 100%;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+
+        .case {
+            flex: 0 0 10%;
+            margin: 10px;
+            cursor: pointer;
+            border: 3px solid #2b2b2b;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s;
+            background-color: #f9e500; /* Darker background color */
+        }
+
+        .case:hover {
+            transform: scale(1.05);
+        }
+        .case img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+        .highlighted {
+            border-color: gold;
+        }
+
+        #resetButton {
+            padding: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: black;
+            border: 3px solid #2b2b2b;
+            border-radius: 5px;
+            width: 100px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: gold; /* Green background color */
+        }
+
+        #resetButton:hover {
+            transform: scale(1.05);
+        }
+
+        #navbar {
+            background-color: black; /* Darker background color for the navbar */
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        #navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+        }
+
+        #navbar a:hover {
+            border-bottom: 2px solid gold;
+        }
+
+        /* Media Queries for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .case {
+                flex: 0 0 20%;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .case {
+                flex: 0 0 40%;
+            }
+        }
+    </style>
+</head>
+</head>
+<body>
+
+<h1>Mario Power-Up Panels</h1>
+<div id="navbar">
+    <a href="cases.html">Cases</a>
+    <a href="mario.html">Mario</a>
+</div>
+<div id="cases">
+    <!-- Row 1 -->
+    <div class="case-row">
+        <div class="case" onclick="changeImage(0)">
+            <img src="images/mario/mariomystery.png" alt="Case 1">
+        </div>
+        <div class="case" onclick="changeImage(1)">
+            <img src="images/mario/mariomystery.png" alt="Case 2">
+        </div>
+        <div class="case" onclick="changeImage(2)">
+            <img src="images/mario/mariomystery.png" alt="Case 3">
+        </div>
+        <div class="case" onclick="changeImage(3)">
+            <img src="images/mario/mariomystery.png" alt="Case 4">
+        </div>
+        <div class="case" onclick="changeImage(4)">
+            <img src="images/mario/mariomystery.png" alt="Case 5">
+        </div>
+        <div class="case" onclick="changeImage(5)">
+            <img src="images/mario/mariomystery.png" alt="Case 6">
+        </div>
+        <div class="case" onclick="changeImage(6)">
+            <img src="images/mario/mariomystery.png" alt="Case 7">
+        </div>
+        <div class="case" onclick="changeImage(7)">
+            <img src="images/mario/mariomystery.png" alt="Case 8">
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="case-row">
+        <div class="case" onclick="changeImage(8)">
+            <img src="images/mario/mariomystery.png" alt="Case 9">
+        </div>
+        <div class="case" onclick="changeImage(9)">
+            <img src="images/mario/mariomystery.png" alt="Case 10">
+        </div>
+        <div class="case" onclick="changeImage(10)">
+            <img src="images/mario/mariomystery.png" alt="Case 11">
+        </div>
+        <div class="case" onclick="changeImage(11)">
+            <img src="images/mario/mariomystery.png" alt="Case 12">
+        </div>
+        <div class="case" onclick="changeImage(12)">
+            <img src="images/mario/mariomystery.png" alt="Case 13">
+        </div>
+        <div class="case" onclick="changeImage(13)">
+            <img src="images/mario/mariomystery.png" alt="Case 14">
+        </div>
+        <div class="case" onclick="changeImage(14)">
+            <img src="images/mario/mariomystery.png" alt="Case 15">
+        </div>
+        <div class="case" onclick="changeImage(15)">
+            <img src="images/mario/mariomystery.png" alt="Case 16">
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="case-row">
+        <div class="case" onclick="changeImage(16)">
+            <img src="images/mario/mariomystery.png" alt="Case 17">
+        </div>
+        <div class="case" onclick="changeImage(17)">
+            <img src="images/mario/mariomystery.png" alt="Case 18">
+        </div>
+        <div class="case" onclick="changeImage(18)">
+            <img src="images/mario/mariomystery.png" alt="Case 19">
+        </div>
+        <div class="case" onclick="changeImage(19)">
+            <img src="images/mario/mariomystery.png" alt="Case 20">
+        </div>
+        <div class="case" onclick="changeImage(20)">
+            <img src="images/mario/mariomystery.png" alt="Case 21">
+        </div>
+        <div class="case" onclick="changeImage(21)">
+            <img src="images/mario/mariomystery.png" alt="Case 22">
+        </div>
+        <div class="case" onclick="changeImage(22)">
+            <img src="images/mario/mariomystery.png" alt="Case 23">
+        </div>
+        <div class="case" onclick="changeImage(23)">
+            <img src="images/mario/mariomystery.png" alt="Case 24">
+        </div>
+    </div>
+    <button id="resetButton" onclick="resetGame()">Reset</button>
+    
+
+<script>
+    // Array of image sources
+
+    var images = [
+        "images/mario/iceflower.png",
+        "images/mario/fireflower.png",
+        "images/mario/penguin.png",
+        "images/mario/tiny.png",
+        "images/mario/giant.png",
+        "images/mario/mushroom.png",
+        "images/mario/star.png",
+        "images/mario/life.png",
+        "images/mario/monster.png",
+        "images/mario/monster.png",
+        "images/mario/babybowser.png",
+        "images/mario/babybowser.png",
+        "images/mario/helicopter.png",
+        "images/mario/iceflower.png",
+        "images/mario/fireflower.png",
+        "images/mario/penguin.png",
+        "images/mario/tiny.png",
+        "images/mario/giant.png",
+        "images/mario/mushroom.png",
+        "images/mario/star.png",
+        "images/mario/life.png",
+        "images/mario/switch.png",
+        "images/mario/switch.png",
+        "images/mario/helicopter.png",
+    ];
+    
+    var selectedCases = 0;
+    var lastClickedCase = null;
+    var bowserCount = 0;
+    var babyBowserCount = 0;
+
+    function changeImage(index) {
+        var caseElement = document.getElementsByClassName("case")[index];
+        if (caseElement.classList.contains('highlighted')) {
+            return;
+        }
+
+        var randomIndex = Math.floor(Math.random() * images.length);
+        var selectedImage = images[randomIndex];
+        images.splice(randomIndex, 1);
+
+        if (selectedImage.includes("monster.png")) {
+            bowserCount++;
+            // Change the selected image to "bowser"
+            caseElement.querySelector('img').src = "images/mario/monster.png";
+            if (bowserCount === 2) {
+                // Delay the alert by 2 seconds after changing the "bowser" image
+                setTimeout(function () {
+                    alert("Game Over! You revealed two Bowser images.");
+                    resetGame();
+                }, 200);
+                return;
+            }
+        } else if (selectedImage.includes("babybowser.png")) {
+            babyBowserCount++;
+            caseElement.querySelector('img').src = "images/mario/babybowser.png";
+        } else {
+            // Change the image for non-"bowser" images
+            caseElement.querySelector('img').src = selectedImage;
+        }
+
+        if (babyBowserCount === 2) {
+            // Delay the alert by 2 seconds after changing the "babybowser" image
+            setTimeout(function () {
+                alert("Game Over! You revealed two Baby Bowser images.");
+                resetGame();
+            }, 200);
+            return;
+        }
+
+        if (selectedImage.includes("switch.png")) {
+        // Play the "winner.mp3" sound
+        var audio = new Audio('music/winner.mp3');
+        audio.play();
+        audio.preload = 'auto';
+    }
+
+        if (lastClickedCase) {
+            lastClickedCase.classList.remove('highlighted');
+        }
+
+        caseElement.classList.add('highlighted');
+        lastClickedCase = caseElement;
+
+        caseElement.onclick = null;
+
+        selectedCases++;
+
+
+        if (selectedCases === 24) {
+            document.getElementById('resetButton').style.display = 'block';
+        }
+    }
+
+    function resetGame() {
+        location.reload();
+    }
+</script>
+</body>
+</html>
