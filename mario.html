@@ -108,6 +108,13 @@
                 flex: 0 0 40%;
             }
         }
+        #scoreBox {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 1.2em;
+            color: white;
+        }
     </style>
 </head>
 </head>
@@ -123,92 +130,90 @@
     <!-- Row 1 -->
     <div class="case-row">
         <div class="case" onclick="changeImage(0)">
-            <img src="images/mario/mariomystery.png" alt="Case 1">
+            <img src="images/mario/mystery1a.png" alt="Case 1">
         </div>
         <div class="case" onclick="changeImage(1)">
-            <img src="images/mario/mariomystery.png" alt="Case 2">
+            <img src="images/mario/mystery2.png" alt="Case 2">
         </div>
         <div class="case" onclick="changeImage(2)">
-            <img src="images/mario/mariomystery.png" alt="Case 3">
+            <img src="images/mario/mystery3.png" alt="Case 3">
         </div>
         <div class="case" onclick="changeImage(3)">
-            <img src="images/mario/mariomystery.png" alt="Case 4">
+            <img src="images/mario/mystery4.png" alt="Case 4">
         </div>
         <div class="case" onclick="changeImage(4)">
-            <img src="images/mario/mariomystery.png" alt="Case 5">
+            <img src="images/mario/mystery5.png" alt="Case 5">
         </div>
         <div class="case" onclick="changeImage(5)">
-            <img src="images/mario/mariomystery.png" alt="Case 6">
+            <img src="images/mario/mystery6.png" alt="Case 6">
         </div>
         <div class="case" onclick="changeImage(6)">
-            <img src="images/mario/mariomystery.png" alt="Case 7">
+            <img src="images/mario/mystery7.png" alt="Case 7">
         </div>
         <div class="case" onclick="changeImage(7)">
-            <img src="images/mario/mariomystery.png" alt="Case 8">
+            <img src="images/mario/mystery8.png" alt="Case 8">
         </div>
     </div>
 
     <!-- Row 2 -->
     <div class="case-row">
         <div class="case" onclick="changeImage(8)">
-            <img src="images/mario/mariomystery.png" alt="Case 9">
+            <img src="images/mario/mystery9.png" alt="Case 9">
         </div>
         <div class="case" onclick="changeImage(9)">
-            <img src="images/mario/mariomystery.png" alt="Case 10">
+            <img src="images/mario/mystery10.png" alt="Case 10">
         </div>
         <div class="case" onclick="changeImage(10)">
-            <img src="images/mario/mariomystery.png" alt="Case 11">
+            <img src="images/mario/mystery11.png" alt="Case 11">
         </div>
         <div class="case" onclick="changeImage(11)">
-            <img src="images/mario/mariomystery.png" alt="Case 12">
+            <img src="images/mario/mystery12.png" alt="Case 12">
         </div>
         <div class="case" onclick="changeImage(12)">
-            <img src="images/mario/mariomystery.png" alt="Case 13">
+            <img src="images/mario/mystery13.png" alt="Case 13">
         </div>
         <div class="case" onclick="changeImage(13)">
-            <img src="images/mario/mariomystery.png" alt="Case 14">
+            <img src="images/mario/mystery14.png" alt="Case 14">
         </div>
         <div class="case" onclick="changeImage(14)">
-            <img src="images/mario/mariomystery.png" alt="Case 15">
+            <img src="images/mario/mystery15.png" alt="Case 15">
         </div>
         <div class="case" onclick="changeImage(15)">
-            <img src="images/mario/mariomystery.png" alt="Case 16">
+            <img src="images/mario/mystery16.png" alt="Case 16">
         </div>
     </div>
 
     <!-- Row 3 -->
     <div class="case-row">
         <div class="case" onclick="changeImage(16)">
-            <img src="images/mario/mariomystery.png" alt="Case 17">
+            <img src="images/mario/mystery17.png" alt="Case 17">
         </div>
         <div class="case" onclick="changeImage(17)">
-            <img src="images/mario/mariomystery.png" alt="Case 18">
+            <img src="images/mario/mystery18.png" alt="Case 18">
         </div>
         <div class="case" onclick="changeImage(18)">
-            <img src="images/mario/mariomystery.png" alt="Case 19">
+            <img src="images/mario/mystery19.png" alt="Case 19">
         </div>
         <div class="case" onclick="changeImage(19)">
-            <img src="images/mario/mariomystery.png" alt="Case 20">
+            <img src="images/mario/mystery20.png" alt="Case 20">
         </div>
         <div class="case" onclick="changeImage(20)">
-            <img src="images/mario/mariomystery.png" alt="Case 21">
+            <img src="images/mario/mystery21.png" alt="Case 21">
         </div>
         <div class="case" onclick="changeImage(21)">
-            <img src="images/mario/mariomystery.png" alt="Case 22">
+            <img src="images/mario/mystery22.png" alt="Case 22">
         </div>
         <div class="case" onclick="changeImage(22)">
-            <img src="images/mario/mariomystery.png" alt="Case 23">
+            <img src="images/mario/mystery23.png" alt="Case 23">
         </div>
         <div class="case" onclick="changeImage(23)">
-            <img src="images/mario/mariomystery.png" alt="Case 24">
+            <img src="images/mario/mystery24.png" alt="Case 24">
         </div>
     </div>
     <button id="resetButton" onclick="resetGame()">Reset</button>
-    
-
+    <div id="scoreBox">Score: <span id="score">0</span></div>
 <script>
     // Array of image sources
-
     var images = [
         "images/mario/iceflower.png",
         "images/mario/fireflower.png",
@@ -231,15 +236,27 @@
         "images/mario/mushroom.png",
         "images/mario/star.png",
         "images/mario/life.png",
-        "images/mario/switch.png",
-        "images/mario/switch.png",
+        "images/mario/mariocoin.png",
+        "images/mario/mariocoin.png",
         "images/mario/helicopter.png",
     ];
-    
+
+   
     var selectedCases = 0;
     var lastClickedCase = null;
     var bowserCount = 0;
     var babyBowserCount = 0;
+    var iceflowerCount = 0;
+    var fireflowerCount = 0;
+    var starCount = 0;
+    var giantCount = 0;
+    var mariocoinCount = 0;
+    var lifeCount = 0;
+    var helicopterCount = 0;
+    var tinyCount = 0;
+    var penguinCount = 0;
+    var mushroomCount = 0;
+    var score = 0;
 
     function changeImage(index) {
         var caseElement = document.getElementsByClassName("case")[index];
@@ -253,10 +270,8 @@
 
         if (selectedImage.includes("monster.png")) {
             bowserCount++;
-            // Change the selected image to "bowser"
             caseElement.querySelector('img').src = "images/mario/monster.png";
             if (bowserCount === 2) {
-                // Delay the alert by 2 seconds after changing the "bowser" image
                 setTimeout(function () {
                     alert("Game Over! You revealed two Bowser images.");
                     resetGame();
@@ -266,26 +281,117 @@
         } else if (selectedImage.includes("babybowser.png")) {
             babyBowserCount++;
             caseElement.querySelector('img').src = "images/mario/babybowser.png";
+        } else if (selectedImage.includes("iceflower.png")) {
+            iceflowerCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (iceflowerCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("fireflower.png")) {
+            fireflowerCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (fireflowerCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("star.png")) {
+            starCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (starCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("giant.png")) {
+            giantCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (giantCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("mariocoin.png")) {
+            mariocoinCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (mariocoinCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("life.png")) {
+            lifeCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (lifeCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("helicopter.png")) {
+            helicopterCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (helicopterCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("tiny.png")) {
+            tinyCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (tinyCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("penguin.png")) {
+            penguinCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (penguinCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
+        } else if (selectedImage.includes("mushroom.png")) {
+            mushroomCount++;
+            caseElement.querySelector('img').src = selectedImage;
+
+            // Increase the score when a second image is revealed
+            if (mushroomCount === 2) {
+                score++;
+                document.getElementById('score').innerText = score;
+                return;
+            }
         } else {
-            // Change the image for non-"bowser" images
             caseElement.querySelector('img').src = selectedImage;
         }
 
         if (babyBowserCount === 2) {
-            // Delay the alert by 2 seconds after changing the "babybowser" image
             setTimeout(function () {
                 alert("Game Over! You revealed two Baby Bowser images.");
                 resetGame();
             }, 200);
             return;
         }
-
-        if (selectedImage.includes("switch.png")) {
-        // Play the "winner.mp3" sound
-        var audio = new Audio('music/winner.mp3');
-        audio.play();
-        audio.preload = 'auto';
-    }
 
         if (lastClickedCase) {
             lastClickedCase.classList.remove('highlighted');
@@ -297,7 +403,6 @@
         caseElement.onclick = null;
 
         selectedCases++;
-
 
         if (selectedCases === 24) {
             document.getElementById('resetButton').style.display = 'block';
