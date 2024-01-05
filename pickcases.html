@@ -6,7 +6,7 @@
     <title>Deal or No Deal</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             text-align: center;
             margin: 20px;
             background-color: #006644;
@@ -17,12 +17,14 @@
             font-size: 2em;
             margin-top: 30px;
             margin-bottom: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
         }
 
         #cases {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
+            justify-content: center;
         }
 
         .case-row {
@@ -33,7 +35,7 @@
         }
 
         .case {
-            flex: 0 0 10%;
+            flex: 0 0 calc(80% / 8); /* Adjusted width for up to eight cases per row */
             margin: 10px;
             cursor: pointer;
             border: 3px solid #2b2b2b;
@@ -61,7 +63,7 @@
 
         #resetButton {
             padding: 10px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: black;
             border: 3px solid #2b2b2b;
             border-radius: 5px;
@@ -69,6 +71,7 @@
             cursor: pointer;
             transition: transform 0.2s;
             background-color: gold; /* Green background color */
+            display: none; /* Hide the reset button initially */
         }
 
         #resetButton:hover {
@@ -94,19 +97,38 @@
         #navbar a:hover {
             border-bottom: 2px solid gold;
         }
-
-        /* Media Queries for responsiveness */
-        @media only screen and (max-width: 768px) {
-            .case {
-                flex: 0 0 20%;
-            }
+        #caseCount{
+            margin-bottom: 10px;
         }
+        input#caseCount {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #2b2b2b;
+    border-radius: 5px 0 0 5px; /* Adjusted border radius for a smoother look */
+    width: 80px;
+    height: 40px;
+    box-sizing: border-box;
+}
 
-        @media only screen and (max-width: 480px) {
-            .case {
-                flex: 0 0 40%;
-            }
-        }
+/* Updated CSS for the "Update Cases" button */
+button#updateButton {
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    border: 2px solid #2b2b2b;
+    border-radius: 0 5px 5px 0; /* Adjusted border radius for a smoother look */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    background-color: #4CAF50; /* Green background color */
+    width: 120px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+button#updateButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -117,6 +139,11 @@
     <a href="mario.html">Mario</a>
     <a href="montyhall.html">Monty Hall</a>
 </div>
+
+<!-- Input box for the number of cases -->
+<label for="caseCount">Enter the number of cases: </label>
+<input type="number" id="caseCount" name="caseCount" min="1" value="3" max="24">
+<button id="updateButton" onclick="updateCases()">Update Cases</button>
 <div id="cases">
     <!-- Row 1 -->
     <div class="case-row">
@@ -201,83 +228,115 @@
             <img src="images/cases/case24.png" alt="Case 24">
         </div>
     </div>
-    <button id="resetButton" onclick="resetGame()">Reset</button>
-    
+<button id="resetButton" onclick="resetGame()">Reset</button>
 
 <script>
-    // Array of image sources
-    var images = [
-        "images/cases/001.png",
-        "images/cases/dollar.png",
-        "images/cases/5dollars.png",
-        "images/cases/10dollars.png",
-        "images/cases/strike.png",
-        "images/cases/25dollars.png",
-        "images/cases/50dollars.png",
-        "images/cases/strike.png",
-        "images/cases/100dollars.png",
-        "images/cases/200dollars.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/350dollars.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/500dollars.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-        "images/cases/strike.png",
-    ];
-    
     var selectedCases = 0;
     var lastClickedCase = null;
+    var greenCheckCaseIndex = null;
+    var caseCount = 0;
+
+    function updateCases() {
+        caseCount = document.getElementById("caseCount").value;
+        // Validate the input
+        if (isNaN(caseCount) || caseCount < 1) {
+            alert("Please enter a valid number greater than 0.");
+            return;
+        }
+
+        // Update the number of cases without changing the selected images
+        generateCases(caseCount);
+
+        // Randomly select one case to be a green check case
+        greenCheckCaseIndex = Math.floor(Math.random() * caseCount);
+
+        // Display the reset button
+        document.getElementById('resetButton').style.display = 'block';
+    }
+
+    function generateCases(caseCount) {
+        // Reset the game
+        selectedCases = 0;
+        lastClickedCase = null;
+        greenCheckCaseIndex = null;
+
+        // Dynamically generate case rows
+        var casesContainer = document.getElementById("cases");
+        casesContainer.innerHTML = ""; // Clear existing content
+
+        // Determine the number of cases per row with a maximum of 8
+        var casesPerRow = Math.min(caseCount, 8);
+
+        for (var j = 0; j < caseCount; j += casesPerRow) {
+            var caseRow = document.createElement("div");
+            caseRow.className = "case-row";
+            for (var k = 0; k < casesPerRow; k++) {
+                var caseIndex = j + k;
+                if (caseIndex < caseCount) {
+                    var caseElement = document.createElement("div");
+                    caseElement.className = "case";
+                    caseElement.onclick = function (index) {
+                        return function () {
+                            changeImage(index);
+                        };
+                    }(caseIndex);
+
+                    var caseImage = document.createElement("img");
+                    caseImage.src = "images/cases/case" + (caseIndex + 1) + ".png";
+                    caseImage.alt = "Case " + (caseIndex + 1);
+
+                    caseElement.appendChild(caseImage);
+                    caseRow.appendChild(caseElement);
+                }
+            }
+            casesContainer.appendChild(caseRow);
+        }
+    }
 
     function changeImage(index) {
-        // Check if the case has already been clicked
         var caseElement = document.getElementsByClassName("case")[index];
         if (caseElement.classList.contains('highlighted')) {
             return;
         }
 
-        // Get a random index from the remaining images
-        var randomIndex = Math.floor(Math.random() * images.length);
+        // Check if the clicked case is the green check case
+        if (index === greenCheckCaseIndex) {
+            caseElement.querySelector('img').src = "images/cases/greencheck.png";
+            playWinnerAudio();
+        } else {
+            // Change the image to "redx.png"
+            caseElement.querySelector('img').src = "images/cases/redx.png";
+        }
 
-        // Get the selected image
-        var selectedImage = images[randomIndex];
-
-        // Remove the selected image from the array
-        images.splice(randomIndex, 1);
-
-        // Change the image source accordingly
-        caseElement.querySelector('img').src = selectedImage;
-
-        // Remove the highlight from the previous clicked case
         if (lastClickedCase) {
             lastClickedCase.classList.remove('highlighted');
         }
 
-        // Highlight the clicked case
         caseElement.classList.add('highlighted');
         lastClickedCase = caseElement;
 
-        // Disable further clicks for this case
         caseElement.onclick = null;
 
         selectedCases++;
 
-        // Check if all cases are opened
-        if (selectedCases === 24) {
+        if (selectedCases === caseCount) {
             document.getElementById('resetButton').style.display = 'block';
         }
     }
 
-    function resetGame() {
-        location.reload(); // Refresh the page
+    function playWinnerAudio() {
+        // Play the "winner.mp3" sound
+        var audio = new Audio('music/winner.mp3');
+        audio.play();
+        audio.preload = 'auto';
     }
+
+    function resetGame() {
+        location.reload();
+    }
+
+    // Initial generation of cases
+    generateCases(3);
 </script>
 </body>
 </html>
