@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ccc;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+            user-select: none; /* Prevent text selection during drag */
+        }
+
+        .box:hover {
+            background-color: #f0f0f0;
+        }
+
+        .images {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent images from wrapping to the next line */
+            margin-top: 20px;
+        }
+
+        .image {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            cursor: grab; /* Set cursor to "grab" for draggable elements */
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            user-select: none; /* Prevent text selection during drag */
+        }
+
+        .image:active {
+            cursor: grabbing; /* Set cursor to "grabbing" during drag */
+        }
+
+        .image:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row" id="row1" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="row" id="row2" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="images" id="images">
+            <!-- Mario-themed images -->
+            <img src="images/mario/iceflower.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/fireflower.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/penguin.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/tiny.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/giant.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/mushroom.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/star.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/life.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/monster.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/babybowser.png" class="image" draggable="true" ondragstart="drag(event)">
+            <img src="images/mario/mariocoin.png" class="image" draggable="true" ondragstart="drag(event)">
+        </div>
+    </div>
+
+    <script>
+        let draggedElement;
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            draggedElement = event.target;
+        }
+
+        function drop(event, row) {
+            event.preventDefault();
+            const target = event.target;
+            const index = Array.from(row.children).indexOf(target);
+
+            if (index !== -1) {
+                row.insertBefore(draggedElement, target);
+            } else {
+                row.appendChild(draggedElement);
+            }
+
+            draggedElement.style.opacity = "1"; // Restore opacity after drop
+        }
+    </script>
+</body>
+</html>

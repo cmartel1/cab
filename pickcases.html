@@ -233,7 +233,7 @@ button#updateButton:hover {
 <script>
     var selectedCases = 0;
     var lastClickedCase = null;
-    var greenCheckCaseIndex = null;
+    var greenCheckCaseIndices = [];
     var caseCount = 0;
 
     function updateCases() {
@@ -247,18 +247,29 @@ button#updateButton:hover {
         // Update the number of cases without changing the selected images
         generateCases(caseCount);
 
-        // Randomly select one case to be a green check case
-        greenCheckCaseIndex = Math.floor(Math.random() * caseCount);
+        // Randomly select two cases to be green check cases
+        greenCheckCaseIndices = getRandomIndices(caseCount, 2);
 
         // Display the reset button
         document.getElementById('resetButton').style.display = 'block';
+    }
+
+    function getRandomIndices(max, count) {
+        var indices = [];
+        while (indices.length < count) {
+            var randomIndex = Math.floor(Math.random() * max);
+            if (!indices.includes(randomIndex)) {
+                indices.push(randomIndex);
+            }
+        }
+        return indices;
     }
 
     function generateCases(caseCount) {
         // Reset the game
         selectedCases = 0;
         lastClickedCase = null;
-        greenCheckCaseIndex = null;
+        greenCheckCaseIndices = [];
 
         // Dynamically generate case rows
         var casesContainer = document.getElementById("cases");
@@ -299,8 +310,8 @@ button#updateButton:hover {
             return;
         }
 
-        // Check if the clicked case is the green check case
-        if (index === greenCheckCaseIndex) {
+        // Check if the clicked case is a green check case
+        if (greenCheckCaseIndices.includes(index)) {
             caseElement.querySelector('img').src = "images/cases/greencheck.png";
             playWinnerAudio();
         } else {
