@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick the Artist</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #2b2b2b;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        #artists {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .artists-row {
+            display: flex;
+            flex-basis: 100%;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+
+        .artists {
+            flex: 0 0 calc(80% / 8); /* Adjusted width for up to eight cases per row */
+            margin: 10px;
+            cursor: pointer;
+            border: 3px solid #2b2b2b;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            padding: 5px;
+            transition: transform 0.2s;
+            background-color: black; /* Darker background color */
+        }
+
+        .artists:hover {
+            transform: scale(1.05);
+        }
+
+        .artists img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px; /* Slightly rounded corners for images */
+        }
+
+        .highlighted {
+            border-color: gold;
+        }
+
+
+        #artistsCount{
+            margin-bottom: 10px;
+        }
+        input#artistsCount {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #2b2b2b;
+    border-radius: 5px 0 0 5px; /* Adjusted border radius for a smoother look */
+    width: 80px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+/* Updated CSS for the "Update Cases" button */
+button#updateButton {
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    border: 2px solid #2b2b2b;
+    border-radius: 0 5px 5px 0; /* Adjusted border radius for a smoother look */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    background-color: #4CAF50; /* Green background color */
+    width: 120px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+button#updateButton:hover {
+    background-color: black; 
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+
+<h1>Pick the Artist, Win a Squishmallow!</h1>
+</div>
+
+<!-- Input box for the number of cases -->
+<label for="artistsCount">Enter the number of artists: </label>
+<input type="number" id="artistsCount" name="artistsCount" min="1" value="3" max="24">
+<button id="updateButton" onclick="updateArtists()">Update Artists</button>
+<div id="artists">
+    <!-- Row 1 -->
+    <div class="artists-row">
+        <div class="artists" onclick="changeImage(0)">
+            <img src="images/artists/artist1.png" alt="Case 1">
+        </div>
+        <div class="artists" onclick="changeImage(1)">
+            <img src="images/artists/artist2.png" alt="Case 2">
+        </div>
+        <div class="artists" onclick="changeImage(2)">
+            <img src="images/artists/artist4.png" alt="Case 3">
+        </div>
+        <div class="artists" onclick="changeImage(3)">
+            <img src="images/artists/artist4.png" alt="Case 4">
+        </div>
+        <div class="artists" onclick="changeImage(4)">
+            <img src="images/artists/artist5.png" alt="Case 5">
+        </div>
+        <div class="artists" onclick="changeImage(5)">
+            <img src="images/artists/artist6.png" alt="Case 6">
+        </div>
+        <div class="artists" onclick="changeImage(6)">
+            <img src="images/artists/artist7.png" alt="Case 7">
+        </div>
+        <div class="artists" onclick="changeImage(7)">
+            <img src="images/artists/artist8.png" alt="Case 8">
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="artists-row">
+        <div class="artists" onclick="changeImage(8)">
+            <img src="images/artists/artist9.png" alt="Case 9">
+        </div>
+        <div class="artists" onclick="changeImage(9)">
+            <img src="images/artists/artist10.png" alt="Case 10">
+        </div>
+        <div class="artists" onclick="changeImage(10)">
+            <img src="images/artists/artist11.png" alt="Case 11">
+        </div>
+        <div class="artists" onclick="changeImage(11)">
+            <img src=images/artists/artist12.png" alt="Case 12">
+        </div>
+        <div class="artists" onclick="changeImage(12)">
+            <img src="images/artists/artist13.png" alt="Case 13">
+        </div>
+        <div class="artists" onclick="changeImage(13)">
+            <img src="images/artists/artist14.png" alt="Case 14">
+        </div>
+        <div class="artists" onclick="changeImage(14)">
+            <img src="images/artists/artist15.png" alt="Case 15">
+        </div>
+        <div class="artists" onclick="changeImage(15)">
+            <img src="images/artists/artist16.png" alt="Case 16">
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="artists-row">
+        <div class="artists" onclick="changeImage(16)">
+            <img src="images/artists/artist17.png" alt="Case 17">
+        </div>
+        <div class="artists" onclick="changeImage(17)">
+            <img src="images/artists/artist18.png" alt="Case 18">
+        </div>
+        <div class="artists" onclick="changeImage(18)">
+            <img src="images/artists/artist19.png" alt="Case 19">
+        </div>
+        <div class="artists" onclick="changeImage(19)">
+            <img src="images/artists/artist20.png" alt="Case 20">
+        </div>
+        <div class="artists" onclick="changeImage(20)">
+            <img src="images/artists/artist21.png" alt="Case 21">
+        </div>
+        <div class="artists" onclick="changeImage(21)">
+            <img src="images/artists/artist22.png" alt="Case 22">
+        </div>
+        <div class="artists" onclick="changeImage(22)">
+            <img src="images/artists/artist23.png" alt="Case 23">
+        </div>
+        <div class="artists" onclick="changeImage(23)">
+            <img src="images/artists/artist24.png" alt="Case 24">
+        </div>
+    </div>
+</div>
+
+<script>
+    var selectedArtists = 0;
+    var lastClickedArtist = null;
+    var greenCheckArtistIndices = [];
+    var artistCount = 0;
+
+    function updateArtists() {
+        artistCount = document.getElementById("artistsCount").value;
+        // Validate the input
+        if (isNaN(artistCount) || artistCount < 1) {
+            alert("Please enter a valid number greater than 0.");
+            return;
+        }
+
+        // Update the number of artists without changing the selected images
+        generateArtists(artistCount);
+
+        // Randomly select two artists to be green check artists
+        greenCheckArtistIndices = getRandomIndices(artistCount, 2);
+
+        // Display the reset button
+        document.getElementById('resetButton').style.display = 'block';
+    }
+
+    function getRandomIndices(max, count) {
+        var indices = [];
+        while (indices.length < count) {
+            var randomIndex = Math.floor(Math.random() * max);
+            if (!indices.includes(randomIndex)) {
+                indices.push(randomIndex);
+            }
+        }
+        return indices;
+    }
+
+    function generateArtists(artistCount) {
+        // Reset the game
+        selectedArtists = 0;
+        lastClickedArtist = null;
+        greenCheckArtistIndices = [];
+
+        // Dynamically generate artist rows
+        var artistsContainer = document.getElementById("artists");
+        artistsContainer.innerHTML = ""; // Clear existing content
+
+        // Determine the number of artists per row with a maximum of 8
+        var artistsPerRow = Math.min(artistCount, 8);
+
+        for (var j = 0; j < artistCount; j += artistsPerRow) {
+            var artistRow = document.createElement("div");
+            artistRow.className = "artists-row";
+            for (var k = 0; k < artistsPerRow; k++) {
+                var artistIndex = j + k;
+                if (artistIndex < artistCount) {
+                    var artistElement = document.createElement("div");
+                    artistElement.className = "artists";
+                    artistElement.onclick = function (index) {
+                        return function () {
+                            changeImage(index);
+                        };
+                    }(artistIndex);
+
+                    var artistImage = document.createElement("img");
+                    artistImage.src = "images/artists/artist" + (artistIndex + 1) + ".png";
+                    artistImage.alt = "Artist " + (artistIndex + 1);
+
+                    artistElement.appendChild(artistImage);
+                    artistRow.appendChild(artistElement);
+                }
+            }
+            artistsContainer.appendChild(artistRow);
+        }
+    }
+
+    function changeImage(index) {
+        var artistElement = document.getElementsByClassName("artists")[index];
+        if (artistElement.classList.contains('highlighted')) {
+            return;
+        }
+
+        // Check if the clicked artist is a green check artist
+        if (greenCheckArtistIndices.includes(index)) {
+            artistElement.querySelector('img').src = "images/artists/checkpink.png";
+            playWinnerAudio();
+        } else {
+            // Change the image to "redx.png"
+            artistElement.querySelector('img').src = "images/artists/xpink.png";
+        }
+
+        if (lastClickedArtist) {
+            lastClickedArtist.classList.remove('highlighted');
+        }
+
+        artistElement.classList.add('highlighted');
+        lastClickedArtist = artistElement;
+
+        artistElement.onclick = null;
+
+        selectedArtists++;
+
+        if (selectedArtists === artistCount) {
+            document.getElementById('resetButton').style.display = 'block';
+        }
+    }
+
+    function playWinnerAudio() {
+        // Play the "winner.mp3" sound
+        var audio = new Audio('music/winner.mp3');
+        audio.play();
+        audio.preload = 'auto';
+    }
+
+    function resetGame() {
+        location.reload();
+    }
+
+    // Initial generation of artists
+    generateArtists(3);
+</script>
+</body>
+</html>
