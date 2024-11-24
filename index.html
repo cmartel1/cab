@@ -164,6 +164,8 @@
                 <option value="do they perform rock music?">Do they perform rock music?</option>
                 <option value="do they perform country music?">Do they perform country music?</option>
                 <option value="do they perform sad music?">Do they perform sad music?</option>
+                <option value="do they go by two words?">Do they go by two words?</option>
+                <option value="do they go by a stage name?">Do they go by a stage name?</option>
                 <option value="do they have more than 20M listeners?">Do they have more than 20M monthly listeners?</option>
                 <option value="are they in a band?">Are/were they in a band?</option>
             </select>
@@ -201,6 +203,8 @@
         const predefinedAnswers = {
             "is this a male artist?": "No!",
             "are they retired?": "No!",
+            "do they go by two words?": "Yes!",
+            "do they go by a stage name?": "No!",
             "are they over 30 years old?": "No!",
             "are they over 40 years old?": "No!",
             "are they over 50 years old?": "No!",
@@ -261,7 +265,7 @@
 
         // Share functionality
 shareButton.addEventListener("click", () => {
-    const shareText = `Congrats! You guessed today's music artist, ${correctAnswer}, in ${questionCount} questions and ${guessCount} guesses! 🌟`;
+    const shareText = `Congrats! You guessed today's music artist in ${questionCount} questions and ${guessCount} guesses! 🌟`;
     
     // Clipboard API for secure contexts
     if (navigator.clipboard && window.isSecureContext) {
