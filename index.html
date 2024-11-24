@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess Today's Music Artist</title>
+    <title>Guess My Favorite Music Artist | Constantly Connecting</title>
     <style>
         /* General Body Styling */
         body {
@@ -65,7 +65,7 @@
             font-size: 1.1rem;
             width: 80%;
             max-width: 400px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 2px solid #87cefa;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -141,7 +141,7 @@
 </head>
 <body>
     <header>
-        <h1>Guess Today's Music Artist</h1>
+        <h1>Guess My Favorite Music Artist</h1>
         <p>Submit questions and make guesses to figure out the artist.</p>
     </header>
     <section class="game-section">
@@ -260,14 +260,36 @@
         });
 
         // Share functionality
-        shareButton.addEventListener("click", () => {
-            const shareText = `Congrats! You guessed today's music artist, ${correctAnswer}, in ${questionCount} questions and ${guessCount} guesses! 🌟`;
-            navigator.clipboard.writeText(shareText).then(() => {
-                alert("Result copied to clipboard! Share it with your friends.");
-            }).catch(err => {
-                console.error("Failed to copy text: ", err);
-            });
+shareButton.addEventListener("click", () => {
+    const shareText = `Congrats! You guessed today's music artist, ${correctAnswer}, in ${questionCount} questions and ${guessCount} guesses! 🌟`;
+    
+    // Clipboard API for secure contexts
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert("Result copied to clipboard! Share it with your friends.");
+        }).catch(err => {
+            console.error("Clipboard API failed: ", err);
+            alert("Failed to copy text. Please try again.");
         });
+    } else {
+        // Fallback method for insecure contexts or older browsers
+        const tempInput = document.createElement("textarea");
+        tempInput.value = shareText;
+        tempInput.style.position = "absolute";
+        tempInput.style.left = "-9999px"; // Hide from view
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+            document.execCommand("copy");
+            alert("Result copied to clipboard! Share it with your friends.");
+        } catch (err) {
+            console.error("Fallback copy method failed: ", err);
+            alert("Failed to copy text. Please try again.");
+        }
+        document.body.removeChild(tempInput);
+    }
+});
+
     </script>
 </body>
 </html>
